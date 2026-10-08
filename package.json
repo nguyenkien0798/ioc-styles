@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Nguyen Dinh Kien",
   "description": "Token và lớp style PrimeNG theo component của iocv3-fe, dùng chung cho micro-app.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "files": [
     "styles"
   ],
