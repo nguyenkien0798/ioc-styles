@@ -1,0 +1,8 @@
+// variable.css là bảng token PrimeNG gốc.
+// Màu IOC chỉnh ở theme/ioc-light/theme.css và theme/ioc-dark/theme.css, nạp sau nên thắng.
+
+@use 'sass:meta';
+
+@include meta.load-css('theme/variable.css');
+@include meta.load-css('theme/ioc-light/theme.css');
+@include meta.load-css('theme/ioc-dark/theme.css');

@@ -1,0 +1,10 @@
+node_modules
+dist
+.sass-cache
+.angular
+
+# Trang test local (npm run preview). Không thuộc package npm.
+src
+preview
+angular.json
+tsconfig.app.json

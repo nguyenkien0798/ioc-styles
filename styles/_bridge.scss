@@ -1,0 +1,543 @@
+@use 'tokens';
+@use 'declare';
+
+// Gắn token IOC lên biến component của PrimeNG, rồi chỉnh những thuộc tính
+// mà token không với tới (chiều cao, focus ring, radius tách của datepicker).
+//
+// $prefix: `p` với PrimeNG 19, `omap` với operations-map (PrimeNG 21, prefix riêng
+// để không ghi đè `--p-*` của shell).
+// $important: bật khi stylesheet của micro-app bị theme shell đè (operations-map).
+//
+// Gọi mixin bên trong host (`app-sample`, `app-operations-map-root`). Overlay
+// append vào body không kế thừa biến — gọi lại mixin trên đúng class overlay.
+
+@mixin apply($prefix: p, $important: false) {
+    @include tokens.tokens;
+    @include prime-tokens($prefix);
+    @include controls($important);
+    @include selection($prefix, $important);
+    @include chrome($prefix, $important);
+}
+
+@mixin prime-tokens($prefix) {
+    --#{$prefix}-primary-color: var(--ioc-primary-color, #0070ce);
+    --#{$prefix}-primary-contrast-color: var(--ioc-primary-contrast-color, #ffffff);
+    --#{$prefix}-primary-hover-color: var(--ioc-primary-hover-color, #2563eb);
+    --#{$prefix}-primary-active-color: var(--ioc-primary-active-color, #1d4ed8);
+    --#{$prefix}-text-color: var(--ioc-text-color, #1e293b);
+    --#{$prefix}-text-muted-color: var(--ioc-text-muted-color, #475569);
+    --#{$prefix}-content-background: var(--ioc-control-background);
+    --#{$prefix}-content-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-content-hover-background: var(--ioc-surface-hover, var(--surface-hover));
+    --#{$prefix}-content-color: var(--ioc-control-color);
+    --#{$prefix}-highlight-background: var(--ioc-highlight-background);
+    --#{$prefix}-highlight-color: var(--ioc-highlight-color);
+    --#{$prefix}-mask-background: var(--ioc-mask-background);
+
+    --#{$prefix}-inputtext-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-inputtext-background: var(--ioc-control-background);
+    --#{$prefix}-inputtext-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-inputtext-color: var(--ioc-control-color);
+    --#{$prefix}-inputtext-placeholder-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-inputtext-focus-ring-shadow: var(--ioc-control-focus-ring);
+    --#{$prefix}-inputtext-invalid-border-color: var(--ioc-invalid-color, #ef4444);
+
+    --#{$prefix}-select-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-select-background: var(--ioc-control-background);
+    --#{$prefix}-select-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-select-color: var(--ioc-control-color);
+    --#{$prefix}-select-placeholder-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-select-dropdown-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-select-dropdown-width: var(--ioc-dropdown-width);
+    --#{$prefix}-select-focus-ring-shadow: var(--ioc-control-focus-ring);
+
+    --#{$prefix}-multiselect-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-multiselect-background: var(--ioc-control-background);
+    --#{$prefix}-multiselect-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-multiselect-color: var(--ioc-control-color);
+    --#{$prefix}-multiselect-placeholder-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-multiselect-dropdown-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-multiselect-dropdown-width: var(--ioc-dropdown-width);
+    --#{$prefix}-multiselect-focus-ring-shadow: var(--ioc-control-focus-ring);
+    --#{$prefix}-multiselect-padding-y: calc(
+        (var(--ioc-control-height) - var(--ioc-control-line-height) - 2px) / 2
+    );
+
+    --#{$prefix}-treeselect-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-treeselect-background: var(--ioc-control-background);
+    --#{$prefix}-treeselect-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-treeselect-color: var(--ioc-control-color);
+    --#{$prefix}-treeselect-focus-ring-shadow: var(--ioc-control-focus-ring);
+
+    --#{$prefix}-textarea-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-textarea-background: var(--ioc-control-background);
+    --#{$prefix}-textarea-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-textarea-color: var(--ioc-control-color);
+    --#{$prefix}-textarea-placeholder-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-textarea-focus-ring-shadow: var(--ioc-control-focus-ring);
+
+    --#{$prefix}-datepicker-dropdown-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-iconfield-icon-color: var(--ioc-control-placeholder-color);
+
+    --#{$prefix}-button-border-radius: var(--ioc-button-radius);
+    --#{$prefix}-button-padding-x: var(--ioc-button-padding-x);
+    --#{$prefix}-button-padding-y: 0;
+    --#{$prefix}-button-label-font-weight: var(--ioc-button-font-weight);
+    --#{$prefix}-button-sm-padding-x: var(--ioc-button-sm-padding-x);
+    --#{$prefix}-button-sm-padding-y: 0;
+    --#{$prefix}-button-sm-font-size: var(--ioc-control-font-size);
+    --#{$prefix}-button-outlined-secondary-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-button-outlined-secondary-color: var(--ioc-control-color);
+    --#{$prefix}-button-outlined-secondary-hover-background: var(--ioc-surface-hover);
+    --#{$prefix}-button-outlined-secondary-active-background: var(--ioc-surface-ground);
+    --#{$prefix}-button-text-secondary-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-button-text-secondary-hover-background: var(--ioc-surface-hover);
+    --#{$prefix}-button-text-secondary-active-background: var(--ioc-surface-ground);
+    --#{$prefix}-button-text-danger-color: var(--ioc-tag-danger, #e11d48);
+    --#{$prefix}-button-text-danger-hover-background: var(--ioc-surface-hover);
+    --#{$prefix}-button-text-danger-active-background: var(--ioc-surface-ground);
+
+    --#{$prefix}-checkbox-width: var(--ioc-checkbox-size);
+    --#{$prefix}-checkbox-height: var(--ioc-checkbox-size);
+    --#{$prefix}-checkbox-border-radius: var(--ioc-checkbox-radius);
+    --#{$prefix}-radiobutton-width: var(--ioc-checkbox-size);
+    --#{$prefix}-radiobutton-height: var(--ioc-checkbox-size);
+
+    --#{$prefix}-datatable-header-cell-background: var(--ioc-control-background);
+    --#{$prefix}-datatable-header-cell-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-datatable-header-cell-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-datatable-header-cell-padding: 8px 10px;
+    --#{$prefix}-datatable-row-background: var(--ioc-control-background);
+    --#{$prefix}-datatable-row-color: var(--ioc-control-color);
+    --#{$prefix}-datatable-row-hover-background: var(--ioc-surface-hover);
+    --#{$prefix}-datatable-row-hover-color: var(--ioc-control-color);
+    --#{$prefix}-datatable-body-cell-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-datatable-body-cell-padding: 7px 10px;
+
+    --#{$prefix}-paginator-background: transparent;
+    --#{$prefix}-paginator-color: var(--ioc-control-color);
+    --#{$prefix}-paginator-padding: 6px 8px;
+
+    --#{$prefix}-tabs-tablist-background: transparent;
+    --#{$prefix}-tabs-tablist-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-tabs-tab-background: transparent;
+    --#{$prefix}-tabs-tab-hover-background: transparent;
+    --#{$prefix}-tabs-tab-active-background: transparent;
+    --#{$prefix}-tabs-tab-border-width: 0 0 2px 0;
+    --#{$prefix}-tabs-tab-border-color: transparent;
+    --#{$prefix}-tabs-tab-hover-border-color: transparent;
+    --#{$prefix}-tabs-tab-active-border-color: var(--ioc-control-focus-color);
+    --#{$prefix}-tabs-tab-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-tabs-tab-hover-color: var(--ioc-control-color);
+    --#{$prefix}-tabs-tab-active-color: var(--ioc-control-focus-color);
+    --#{$prefix}-tabs-tab-font-weight: 500;
+    --#{$prefix}-tabs-tab-padding: 0.625rem 0.25rem 0.875rem;
+    --#{$prefix}-tabs-tab-margin: 0 0 -1px 0;
+    --#{$prefix}-tabs-active-bar-height: 0;
+    --#{$prefix}-tabs-tabpanel-background: transparent;
+    --#{$prefix}-tabs-tabpanel-padding: 0;
+
+    --#{$prefix}-tag-border-radius: 999px;
+    --#{$prefix}-tag-padding: 1px 7px;
+    --#{$prefix}-tag-font-size: var(--ioc-font-tag, 14px);
+    --#{$prefix}-tag-font-weight: 500;
+    --#{$prefix}-tag-primary-background: transparent;
+    --#{$prefix}-tag-primary-color: var(--ioc-tag-primary, #0284c7);
+    --#{$prefix}-tag-info-background: transparent;
+    --#{$prefix}-tag-info-color: var(--ioc-tag-info, #0284c7);
+    --#{$prefix}-tag-success-background: transparent;
+    --#{$prefix}-tag-success-color: var(--ioc-tag-success, #07964a);
+    --#{$prefix}-tag-warn-background: transparent;
+    --#{$prefix}-tag-warn-color: var(--ioc-tag-warn, #d97706);
+    --#{$prefix}-tag-danger-background: transparent;
+    --#{$prefix}-tag-danger-color: var(--ioc-tag-danger, #e11d48);
+    --#{$prefix}-tag-secondary-background: transparent;
+    --#{$prefix}-tag-secondary-color: var(--ioc-control-placeholder-color);
+
+    --#{$prefix}-card-border-radius: var(--ioc-card-radius);
+    --#{$prefix}-card-background: var(--ioc-control-background);
+    --#{$prefix}-dialog-border-radius: var(--ioc-dialog-radius);
+}
+
+@mixin controls($important: false) {
+    .app-label,
+    .input-label,
+    .multi-select-label {
+        display: flex;
+        align-items: center;
+        gap: var(--ioc-label-gap);
+        margin-bottom: var(--ioc-label-margin-bottom);
+        color: var(--ioc-control-color);
+        @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+        font-weight: var(--ioc-label-font-weight);
+        line-height: var(--ioc-control-line-height);
+        letter-spacing: var(--ioc-control-letter-spacing);
+        user-select: none;
+
+        .required-star,
+        .required::after {
+            color: var(--ioc-required-color);
+        }
+    }
+
+    input.p-inputtext:not(.p-select-filter):not(.p-treeselect-filter),
+    .p-password-input {
+        @include control-shell($important);
+        @include declare.decl(padding, 0 var(--ioc-control-padding-x), $important);
+
+        &::placeholder {
+            color: var(--ioc-control-placeholder-color);
+            opacity: 1;
+            font-weight: 400;
+        }
+    }
+
+    .p-textarea {
+        @include control-shell($important);
+        @include declare.decl(height, auto, $important);
+        @include declare.decl(min-height, var(--ioc-textarea-min-height), $important);
+        @include declare.decl(padding, 0.75rem, $important);
+        resize: vertical;
+    }
+
+    .p-select,
+    .p-treeselect,
+    .p-multiselect {
+        @include control-shell($important);
+        display: flex;
+        align-items: center;
+    }
+
+    .p-multiselect {
+        @include declare.decl(height, auto, $important);
+        @include declare.decl(min-height, var(--ioc-control-height), $important);
+    }
+
+    .p-select-label,
+    .p-treeselect-label,
+    .p-multiselect-label {
+        @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+        line-height: var(--ioc-control-line-height);
+        letter-spacing: var(--ioc-control-letter-spacing);
+    }
+
+    .p-select-label,
+    .p-treeselect-label {
+        padding-block: 0;
+        padding-inline: var(--ioc-control-padding-x);
+    }
+
+    .p-select-dropdown,
+    .p-treeselect-dropdown,
+    .p-multiselect-dropdown {
+        width: var(--ioc-dropdown-width);
+        color: var(--ioc-control-placeholder-color);
+    }
+
+    .p-datepicker {
+        .p-datepicker-input {
+            @include control-shell($important);
+            @include declare.decl(
+                border-radius,
+                var(--ioc-control-radius) 0 0 var(--ioc-control-radius),
+                $important
+            );
+        }
+
+        .p-datepicker-dropdown {
+            @include declare.decl(width, var(--ioc-control-height), $important);
+            @include declare.decl(height, var(--ioc-control-height), $important);
+            @include declare.decl(background, var(--ioc-control-background), $important);
+            @include declare.decl(border, 1px solid var(--ioc-control-border-color), $important);
+            border-inline-start: 0;
+            @include declare.decl(
+                border-radius,
+                0 var(--ioc-control-radius) var(--ioc-control-radius) 0,
+                $important
+            );
+            color: var(--ioc-control-placeholder-color);
+            box-shadow: none;
+        }
+
+        &:not(.p-disabled):hover .p-datepicker-input,
+        &:not(.p-disabled):hover .p-datepicker-dropdown,
+        &:focus-within .p-datepicker-input,
+        &:focus-within .p-datepicker-dropdown {
+            @include declare.decl(border-color, var(--ioc-control-focus-color), $important);
+        }
+    }
+
+    input.p-inputtext.p-invalid,
+    input.p-inputtext.ng-invalid.ng-touched,
+    .p-textarea.p-invalid,
+    .p-textarea.ng-invalid.ng-touched,
+    .p-select.p-invalid,
+    .p-select.ng-invalid.ng-touched,
+    .p-treeselect.p-invalid,
+    .p-multiselect.p-invalid,
+    .p-multiselect.ng-invalid.ng-touched,
+    p-select.ng-invalid.ng-touched .p-select,
+    p-select.p-invalid .p-select,
+    p-treeselect.ng-invalid.ng-touched .p-treeselect,
+    p-treeselect.p-invalid .p-treeselect,
+    .p-datepicker.p-invalid .p-datepicker-input,
+    .p-datepicker.p-invalid .p-datepicker-dropdown,
+    .p-datepicker.ng-invalid.ng-touched .p-datepicker-input,
+    .p-datepicker.ng-invalid.ng-touched .p-datepicker-dropdown {
+        @include invalid-shell($important);
+    }
+
+    .p-button:not(.p-button-icon-only):not(.p-datepicker-dropdown) {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        box-sizing: border-box;
+        appearance: none;
+        cursor: pointer;
+        font-family: inherit;
+        @include declare.decl(height, var(--ioc-button-height), $important);
+        @include declare.decl(min-height, var(--ioc-button-height), $important);
+        @include declare.decl(padding, 0 var(--ioc-button-padding-x), $important);
+        @include declare.decl(border-radius, var(--ioc-button-radius), $important);
+        @include declare.decl(border, 1px solid transparent, $important);
+        @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+        @include declare.decl(font-weight, var(--ioc-button-font-weight), $important);
+        line-height: 1.25rem;
+        letter-spacing: var(--ioc-control-letter-spacing);
+        transition: var(--ioc-control-transition);
+
+        &:not(.p-button-outlined):not(.p-button-text):not(.p-button-secondary) {
+            @include declare.decl(background, var(--p-button-primary-background, var(--ioc-primary-color)), $important);
+            @include declare.decl(color, var(--p-button-primary-color, var(--ioc-primary-contrast-color)), $important);
+            @include declare.decl(border-color, var(--p-button-primary-border-color, var(--ioc-primary-color)), $important);
+
+            &:hover:not(:disabled) {
+                @include declare.decl(background, var(--p-button-primary-hover-background, var(--ioc-primary-hover-color)), $important);
+                @include declare.decl(border-color, var(--p-button-primary-hover-border-color, var(--ioc-primary-hover-color)), $important);
+            }
+        }
+
+        .p-button-icon,
+        .p-button-icon.ti {
+            @include declare.decl(font-size, var(--ioc-button-icon-size), $important);
+        }
+
+        &:active:not(:disabled) {
+            transform: scale(0.98);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--ioc-control-focus-color);
+            outline-offset: 2px;
+        }
+
+        &:disabled {
+            opacity: var(--ioc-disabled-opacity);
+        }
+    }
+
+    .p-button-sm:not(.p-button-icon-only) {
+        @include declare.decl(height, var(--ioc-button-sm-height), $important);
+        @include declare.decl(min-height, var(--ioc-button-sm-height), $important);
+        @include declare.decl(border-radius, var(--ioc-button-sm-radius), $important);
+        @include declare.decl(padding, 0 var(--ioc-button-sm-padding-x), $important);
+    }
+
+    .p-button-lg:not(.p-button-icon-only) {
+        @include declare.decl(height, var(--ioc-button-lg-height), $important);
+        @include declare.decl(min-height, var(--ioc-button-lg-height), $important);
+    }
+
+    .p-button-icon-only,
+    .ioc-btn-action {
+        @include declare.decl(width, var(--ioc-action-size), $important);
+        @include declare.decl(height, var(--ioc-action-size), $important);
+        @include declare.decl(min-height, var(--ioc-action-size), $important);
+        @include declare.decl(border-radius, var(--ioc-action-radius), $important);
+        padding: 0;
+    }
+
+    .p-button-outlined.p-button-secondary,
+    .p-button-outlined.p-button-contrast {
+        @include declare.decl(background, var(--ioc-control-background), $important);
+        @include declare.decl(color, var(--ioc-control-color), $important);
+        @include declare.decl(border, 1px solid var(--ioc-control-border-color), $important);
+
+        &:hover:not(:disabled) {
+            @include declare.decl(background, var(--ioc-surface-hover), $important);
+        }
+    }
+
+    .p-button-outlined:not(.p-button-secondary):not(.p-button-contrast) {
+        @include declare.decl(background, transparent, $important);
+        @include declare.decl(color, var(--ioc-primary-color), $important);
+        @include declare.decl(border, 1px solid var(--ioc-primary-color), $important);
+    }
+
+    .helper-message,
+    .p-error,
+    .error-message {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: var(--ioc-helper-font-size);
+        line-height: 1.125rem;
+    }
+
+    .helper-message {
+        color: var(--ioc-control-placeholder-color);
+    }
+
+    .p-error,
+    .error-message {
+        color: var(--ioc-invalid-color, #ef4444);
+    }
+}
+
+@mixin control-shell($important: false) {
+    box-sizing: border-box;
+    @include declare.decl(height, var(--ioc-control-height), $important);
+    @include declare.decl(min-height, var(--ioc-control-height), $important);
+    @include declare.decl(border-radius, var(--ioc-control-radius), $important);
+    @include declare.decl(background, var(--ioc-control-background), $important);
+    @include declare.decl(border, 1px solid var(--ioc-control-border-color), $important);
+    @include declare.decl(color, var(--ioc-control-color), $important);
+    @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+    line-height: var(--ioc-control-line-height);
+    letter-spacing: var(--ioc-control-letter-spacing);
+    box-shadow: none;
+    transition: var(--ioc-control-transition);
+
+    &:enabled:focus,
+    &.p-focus,
+    &:focus-within {
+        @include declare.decl(border-color, var(--ioc-control-focus-color), $important);
+        @include declare.decl(box-shadow, var(--ioc-control-focus-ring), $important);
+        outline: none;
+    }
+
+    &:disabled,
+    &.p-disabled {
+        @include declare.decl(opacity, var(--ioc-disabled-opacity), $important);
+        background: var(--ioc-surface-ground);
+        cursor: not-allowed;
+    }
+}
+
+@mixin invalid-shell($important: false) {
+    @include declare.decl(border-color, var(--ioc-invalid-color, #ef4444), $important);
+
+    &:enabled:focus,
+    &.p-focus,
+    &:focus-within {
+        @include declare.decl(border-color, var(--ioc-invalid-color, #ef4444), $important);
+        @include declare.decl(box-shadow, 0 0 0 1px var(--ioc-invalid-color, #ef4444), $important);
+    }
+}
+
+@mixin selection($prefix, $important: false) {
+    .p-checkbox .p-checkbox-box {
+        @include declare.decl(width, var(--ioc-checkbox-size), $important);
+        @include declare.decl(height, var(--ioc-checkbox-size), $important);
+        @include declare.decl(border-radius, var(--ioc-checkbox-radius), $important);
+        @include declare.decl(border-width, 2px, $important);
+    }
+
+    .p-radiobutton .p-radiobutton-box {
+        @include declare.decl(width, var(--ioc-checkbox-size), $important);
+        @include declare.decl(height, var(--ioc-checkbox-size), $important);
+        @include declare.decl(border-radius, 9999px, $important);
+        @include declare.decl(border-width, 2px, $important);
+    }
+}
+
+@mixin chrome($prefix, $important: false) {
+    .ioc-card,
+    .p-card {
+        @include declare.decl(background, var(--ioc-control-background), $important);
+        @include declare.decl(border, 1px solid var(--ioc-control-border-color), $important);
+        @include declare.decl(border-radius, var(--ioc-card-radius), $important);
+    }
+
+    .p-card .p-card-body {
+        @include declare.decl(padding, var(--ioc-card-padding), $important);
+    }
+
+    .ioc-card {
+        padding: var(--ioc-card-padding);
+        box-sizing: border-box;
+    }
+
+    .p-dialog {
+        @include declare.decl(border-radius, var(--ioc-dialog-radius), $important);
+        @include declare.decl(background, var(--ioc-control-background), $important);
+
+        .p-dialog-header,
+        .p-dialog-content,
+        .p-dialog-footer {
+            @include declare.decl(background, var(--ioc-control-background), $important);
+            color: var(--ioc-control-color);
+        }
+
+        .p-dialog-header {
+            padding: 1.25rem 1.5rem;
+            border-top-left-radius: var(--ioc-dialog-radius);
+            border-top-right-radius: var(--ioc-dialog-radius);
+        }
+
+        .p-dialog-title {
+            font-size: var(--ioc-font-dialog-title, 21px);
+            font-weight: 600;
+        }
+
+        .p-dialog-content {
+            padding: 1.5rem;
+        }
+
+        .p-dialog-footer {
+            padding: 1rem 1.5rem;
+            border-bottom-left-radius: var(--ioc-dialog-radius);
+            border-bottom-right-radius: var(--ioc-dialog-radius);
+        }
+    }
+
+    .dialog-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.75rem;
+    }
+
+    .p-datatable-thead > tr > th {
+        @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+        font-weight: 500;
+    }
+
+    .p-datatable-tbody > tr > td {
+        height: 47px;
+        @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+        font-weight: 400;
+        line-height: 22px;
+    }
+
+    .p-tablist {
+        border-bottom: 1px solid var(--ioc-control-border-color);
+    }
+
+    .p-tablist-tab-list {
+        gap: 2rem;
+    }
+
+    .p-tab.p-tab-active {
+        font-weight: 600;
+    }
+
+    .p-tablist-active-bar {
+        display: none;
+    }
+
+    .p-tag {
+        border: 1px solid currentColor;
+        line-height: 1.375rem;
+        background: transparent;
+    }
+}

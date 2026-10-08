@@ -1,0 +1,46 @@
+// Số đo lấy từ component của iocv3-fe (app-button, app-input, app-select,
+// card-layout, dialog). Root của shell là 14px, nên 2.5rem = 35px và 0.75rem = 10.5px.
+// Giữ rem để micro-app nhúng trong shell khớp đúng scale đó.
+
+@mixin tokens {
+    --ioc-control-height: 2.5rem;
+    --ioc-control-radius: 0.75rem;
+    --ioc-control-font-size: var(--app-form-font-size, 14px);
+    --ioc-control-line-height: 1.375rem;
+    --ioc-control-padding-x: 0.75rem;
+    --ioc-control-letter-spacing: -0.015em;
+    --ioc-control-transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    --ioc-control-background: var(--ioc-surface-card, #ffffff);
+    --ioc-control-border-color: var(--ioc-surface-border, #cecece);
+    --ioc-control-color: var(--ioc-text-color, #1e293b);
+    --ioc-control-placeholder-color: var(--ioc-text-muted-color, #475569);
+    --ioc-control-focus-color: var(--ioc-primary-color, #0070ce);
+    --ioc-control-focus-ring: 0 0 0 1px var(--ioc-control-focus-color);
+    --ioc-disabled-opacity: 0.6;
+
+    --ioc-button-height: var(--ioc-control-height);
+    --ioc-button-radius: var(--ioc-control-radius);
+    --ioc-button-padding-x: 12px;
+    --ioc-button-font-weight: 500;
+    --ioc-button-sm-height: 2rem;
+    --ioc-button-sm-radius: 0.5rem;
+    --ioc-button-sm-padding-x: 0.75rem;
+    --ioc-button-lg-height: 3rem;
+    --ioc-button-icon-size: 1rem;
+    --ioc-action-size: 2rem;
+    --ioc-action-radius: 0.5rem;
+
+    --ioc-label-gap: 0.25rem;
+    --ioc-label-margin-bottom: 0.375rem;
+    --ioc-label-font-weight: 500;
+    --ioc-required-color: #f65a5a;
+
+    --ioc-card-radius: 1.5rem;
+    --ioc-card-padding: 1.5rem;
+    --ioc-dialog-radius: 1rem;
+    --ioc-checkbox-size: 1.25rem;
+    --ioc-checkbox-radius: 0.25rem;
+    --ioc-dropdown-width: 2.25rem;
+    --ioc-textarea-min-height: 5rem;
+    --ioc-helper-font-size: 0.8125rem;
+}

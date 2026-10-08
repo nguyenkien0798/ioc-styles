@@ -1,0 +1,50 @@
+{
+  "name": "ioc-styles",
+  "version": "1.0.0",
+  "author": "Nguyen Dinh Kien",
+  "description": "Token và lớp style PrimeNG theo component của iocv3-fe, dùng chung cho micro-app.",
+  "license": "UNLICENSED",
+  "files": [
+    "styles"
+  ],
+  "exports": {
+    ".": {
+      "sass": "./styles/index.scss",
+      "style": "./styles/index.scss",
+      "default": "./styles/index.scss"
+    },
+    "./theme": {
+      "sass": "./styles/theme.scss",
+      "style": "./styles/theme.scss",
+      "default": "./styles/theme.scss"
+    }
+  },
+  "sideEffects": [
+    "**/*.scss"
+  ],
+  "scripts": {
+    "preview": "ng serve preview --port 4300"
+  },
+  "dependencies": {
+    "sass": "^1.105.1"
+  },
+  "devDependencies": {
+    "@primeng/themes": "^19.1.4",
+    "primeicons": "^7.0.0",
+    "@angular-devkit/build-angular": "^19.2.27",
+    "@angular/animations": "^19.2.25",
+    "@angular/cdk": "^19.2.19",
+    "@angular/cli": "^19.2.27",
+    "@angular/common": "^19.2.25",
+    "@angular/compiler": "^19.2.25",
+    "@angular/compiler-cli": "^19.2.25",
+    "@angular/core": "^19.2.25",
+    "@angular/forms": "^19.2.25",
+    "@angular/platform-browser": "^19.2.25",
+    "@angular/platform-browser-dynamic": "^19.2.25",
+    "primeng": "npm:@vietdanh1899/primeng@19.1.2-2",
+    "rxjs": "~7.8.1",
+    "typescript": "~5.7.3",
+    "zone.js": "^0.15.1"
+  }
+}

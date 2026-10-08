@@ -1,0 +1,67 @@
+/* Theme tối. Sửa màu ở file này.
+   Nạp sau variable.css, gắn lên .dark (class trên <html>), nên đè token semantic của PrimeNG. */
+
+.dark {
+    --font-family: "Inter var", sans-serif;
+    --ioc-primary-color: #49aafc;
+    --ioc-primary-contrast-color: #0a0c11;
+    --ioc-primary-hover-color: #93c5fd;
+    --ioc-primary-active-color: #bfdbfe;
+
+    --ioc-text-color: #e1e2e3;
+    --ioc-text-muted-color: rgba(255, 255, 255, 0.6);
+
+    --ioc-surface-ground: #15283c;
+    --ioc-surface-section: #0a0c11;
+    --ioc-surface-card: #15283c;
+    --ioc-surface-overlay: #15283c;
+    --ioc-surface-border: #424b57;
+    --ioc-surface-hover: #05375f;
+    --ioc-control-fill: #1c324a;
+
+    --ioc-mask-background: rgba(0, 0, 0, 0.8);
+    --ioc-highlight-background: #2f4f6b;
+    --ioc-highlight-color: hsl(210, 3%, 89%);
+    --ioc-error-color: #f65a5a;
+    --ioc-invalid-color: #ef4444;
+    --ioc-focus-ring: 0 0 0 0.2rem rgba(129, 140, 248, 0.2);
+
+    --ioc-tag-primary: #38bdf8;
+    --ioc-tag-info: #38bdf8;
+    --ioc-tag-success: #27dc70;
+    --ioc-tag-warn: #fbbf24;
+    --ioc-tag-danger: #fb7185;
+    --ioc-tag-lock: #f65151;
+
+    --p-primary-color: var(--ioc-primary-color);
+    --p-primary-contrast-color: var(--ioc-primary-contrast-color);
+    --p-primary-hover-color: var(--ioc-primary-hover-color);
+    --p-primary-active-color: var(--ioc-primary-active-color);
+    --p-text-color: var(--ioc-text-color);
+    --p-text-muted-color: var(--ioc-text-muted-color);
+    --p-content-background: var(--ioc-surface-card);
+    --p-content-border-color: var(--ioc-surface-border);
+    --p-content-hover-background: var(--ioc-surface-hover);
+    --p-content-color: var(--ioc-text-color);
+    --p-highlight-background: var(--ioc-highlight-background);
+    --p-highlight-color: var(--ioc-highlight-color);
+    --p-mask-background: var(--ioc-mask-background);
+
+    --primary-color: var(--ioc-primary-color);
+    --primary-color-text: var(--ioc-primary-contrast-color);
+    --text-color: var(--ioc-text-color);
+    --text-color-secondary: var(--ioc-text-muted-color);
+    --surface-ground: var(--ioc-surface-ground);
+    --surface-section: var(--ioc-surface-section);
+    --surface-card: var(--ioc-surface-card);
+    --surface-overlay: var(--ioc-surface-overlay);
+    --surface-border: var(--ioc-surface-border);
+    --surface-hover: var(--ioc-surface-hover);
+    --app-control-background: var(--ioc-control-fill);
+    --maskbg: var(--ioc-mask-background);
+    --highlight-bg: var(--ioc-highlight-background);
+    --highlight-text-color: var(--ioc-highlight-color);
+    --error-color: var(--ioc-error-color);
+    --tag-lock-color: var(--ioc-tag-lock);
+    --focus-ring: var(--ioc-focus-ring);
+}
