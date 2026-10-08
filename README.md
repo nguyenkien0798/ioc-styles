@@ -1,6 +1,6 @@
 # ioc-styles
 
-Style dùng chung cho micro-app PrimeNG (operation-ngx, operations-map, …) theo component của **iocv3-fe**: input/select/textarea cao `2.5rem`, bo `0.75rem`, nút cùng kích thước (sm `2rem` / `0.5rem`), focus ring `1px` màu primary, card bo `1.5rem`, dialog bo `1rem`.
+Style dùng chung cho mọi micro-app PrimeNG theo component của **iocv3-fe**: input/select/textarea cao `2.5rem`, bo `0.75rem`, nút cùng kích thước (sm `2rem` / `0.5rem`), focus ring `1px` màu primary, card bo `1.5rem`, dialog bo `1rem`.
 
 Package chỉ có SCSS, không phụ thuộc Angular, nên dùng được cả Angular 19 (PrimeNG 19) và Angular 21 (PrimeNG 21).
 
@@ -25,29 +25,26 @@ Local, trước khi publish:
 
 ## Dùng
 
-Gọi mixin **bên trong host** của micro-app. Stylesheet được shell nhét vào `document.head`; selector trần sẽ đè luôn giao diện shell.
+Gọi mixin **bên trong selector host** của micro-app. Stylesheet được shell nhét vào `document.head`; selector trần sẽ đè giao diện shell.
 
-### operation-ngx (PrimeNG 19, prefix `p`)
+`$prefix` là prefix biến CSS của PrimeNG trong app đó. Mặc định `p` (token `--p-*`). App đặt prefix riêng thì truyền đúng prefix đó, để token của app tách khỏi `--p-*` của shell.
+
+`$important` bật khi theme của shell đè stylesheet của micro-app.
 
 ```scss
 @use 'ioc-styles/theme';
 @use 'ioc-styles' as ioc;
 
-app-sample {
+app-root {
     @include ioc.apply($prefix: p);
 }
 ```
 
-### operations-map (PrimeNG 21, prefix `omap`)
-
-Giữ prefix `omap`. Bỏ prefix sẽ ghi đè token `--p-*` của shell.
+Khi stylesheet bị shell đè:
 
 ```scss
-@use 'ioc-styles/theme';
-@use 'ioc-styles' as ioc;
-
-app-operations-map-root {
-    @include ioc.apply($prefix: omap, $important: true);
+app-root {
+    @include ioc.apply($prefix: p, $important: true);
 }
 ```
 
