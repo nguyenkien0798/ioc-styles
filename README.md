@@ -34,7 +34,9 @@ Khai báo trong `angular.json` → `styles`, sau theme PrimeNG của app:
 
 Shell bật tối bằng class `dark` trên `<html>`. `--ioc-control-background`, `--ioc-control-border-color`, `--ioc-control-color` trỏ về màu theme, nên đổi theo sáng/tối.
 
-Tên cũ vẫn có, cùng giá trị: `--primary-color`, `--text-color`, `--surface-border`, `--border-radius`, `--app-form-font-size`.
+Tên cũ vẫn có, cùng giá trị: `--primary-color`, `--text-color`, `--surface-border`, `--border-radius`.
+
+Cỡ chữ micro-app đang đọc: `--app-form-font-size` `14px`, `--app-title-text-size` `21px`, `--app-title-content-text-size` `18px`.
 
 ## Micro-app tự đè component
 

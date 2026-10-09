@@ -17,7 +17,9 @@
     --ioc-label-font-size: var(--ioc-font-size-control);
     --ioc-button-font-size: var(--ioc-font-size-control);
     --ioc-page-title-font-size: var(--ioc-font-size-dialog-title);
-    --app-form-font-size: var(--ioc-control-font-size);
+    --app-form-font-size: 14px;
+    --app-title-text-size: 21px;
+    --app-title-content-text-size: 18px;
 
     --ioc-control-height: 2.5rem;
     --ioc-control-radius: 0.75rem;

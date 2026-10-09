@@ -1,6 +1,6 @@
 {
   "name": "ioc-styles",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Nguyen Dinh Kien",
   "description": "Biến màu, cỡ chữ và kích thước dùng chung cho micro-app. Không đè CSS component.",
   "license": "MIT",
