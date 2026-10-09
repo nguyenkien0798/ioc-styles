@@ -24,7 +24,7 @@
     --ioc-highlight-color: #1d4ed8;
     --ioc-error-color: #dd0707;
     --ioc-invalid-color: #ef4444;
-    --ioc-focus-ring: 0px 0px 4px 0px #039ff6;
+    --ioc-focus-ring: 0 0 0.28571429rem 0 #039ff6;
 
     --ioc-tag-primary: #0284c7;
     --ioc-tag-info: #0284c7;

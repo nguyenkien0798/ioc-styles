@@ -2,8 +2,8 @@
 :root {
     --ioc-error-color: #dd0707;
     --ioc-font-body: 1.0714286rem;
-    --ioc-font-dialog-title: 21px;
-    --ioc-font-tag: 14px;
+    --ioc-font-dialog-title: 1.5rem;
+    --ioc-font-tag: 1rem;
     --ioc-font-menu: 1rem;
     --p-border-radius-none: 0;
     --p-border-radius-xs: 2px;

@@ -1,0 +1,370 @@
+@use 'declare';
+
+// Token và khung cho component PrimeNG mà micro-app đang dùng nhưng bridge
+// form/button/table chưa phủ. Giá trị đều trỏ về --ioc-*, nên đổi token trong
+// package là đủ — app chỉ cần cài version mới.
+
+@mixin tokens($prefix) {
+    --#{$prefix}-form-field-background: var(--ioc-control-background);
+    --#{$prefix}-form-field-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-form-field-hover-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-form-field-focus-border-color: var(--ioc-control-focus-color);
+    --#{$prefix}-form-field-color: var(--ioc-control-color);
+    --#{$prefix}-form-field-placeholder-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-form-field-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-form-field-padding-x: var(--ioc-control-padding-x);
+    --#{$prefix}-form-field-shadow: none;
+    --#{$prefix}-form-field-focus-ring-shadow: var(--ioc-control-focus-ring);
+    --#{$prefix}-form-field-invalid-border-color: var(--ioc-invalid-color, #ef4444);
+    --#{$prefix}-form-field-icon-color: var(--ioc-control-placeholder-color);
+
+    --#{$prefix}-autocomplete-background: var(--ioc-control-background);
+    --#{$prefix}-autocomplete-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-autocomplete-hover-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-autocomplete-focus-border-color: var(--ioc-control-focus-color);
+    --#{$prefix}-autocomplete-color: var(--ioc-control-color);
+    --#{$prefix}-autocomplete-placeholder-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-autocomplete-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-autocomplete-focus-ring-shadow: var(--ioc-control-focus-ring);
+    --#{$prefix}-autocomplete-dropdown-width: var(--ioc-control-height);
+    --#{$prefix}-autocomplete-dropdown-background: var(--ioc-control-background);
+    --#{$prefix}-autocomplete-dropdown-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-autocomplete-dropdown-hover-color: var(--ioc-control-color);
+    --#{$prefix}-autocomplete-overlay-background: var(--ioc-surface-overlay, var(--ioc-control-background));
+    --#{$prefix}-autocomplete-overlay-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-autocomplete-overlay-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-autocomplete-overlay-color: var(--ioc-control-color);
+    --#{$prefix}-autocomplete-option-focus-background: var(--ioc-surface-hover);
+    --#{$prefix}-autocomplete-option-selected-background: var(--ioc-highlight-background);
+    --#{$prefix}-autocomplete-option-selected-color: var(--ioc-highlight-color);
+    --#{$prefix}-autocomplete-option-color: var(--ioc-control-color);
+    --#{$prefix}-autocomplete-chip-border-radius: var(--ioc-button-sm-radius);
+
+    --#{$prefix}-inputnumber-button-width: var(--ioc-control-height);
+    --#{$prefix}-inputnumber-button-background: var(--ioc-surface-section, var(--ioc-control-background));
+    --#{$prefix}-inputnumber-button-hover-background: var(--ioc-surface-hover);
+    --#{$prefix}-inputnumber-button-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-inputnumber-button-hover-color: var(--ioc-control-color);
+    --#{$prefix}-inputnumber-button-border-color: var(--ioc-control-border-color);
+
+    --#{$prefix}-inputgroup-addon-background: var(--ioc-surface-section, var(--ioc-control-background));
+    --#{$prefix}-inputgroup-addon-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-inputgroup-addon-color: var(--ioc-control-color);
+    --#{$prefix}-inputgroup-addon-border-radius: var(--ioc-control-radius);
+
+    --#{$prefix}-selectbutton-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-togglebutton-background: var(--ioc-control-background);
+    --#{$prefix}-togglebutton-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-togglebutton-color: var(--ioc-control-color);
+    --#{$prefix}-togglebutton-hover-background: var(--ioc-surface-hover);
+    --#{$prefix}-togglebutton-checked-background: var(--ioc-primary-color);
+    --#{$prefix}-togglebutton-checked-color: var(--ioc-primary-contrast-color);
+    --#{$prefix}-togglebutton-checked-border-color: var(--ioc-primary-color);
+
+    --#{$prefix}-colorpicker-preview-width: var(--ioc-control-height);
+    --#{$prefix}-colorpicker-preview-height: var(--ioc-control-height);
+    --#{$prefix}-colorpicker-preview-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-colorpicker-panel-background: var(--ioc-surface-overlay, var(--ioc-control-background));
+    --#{$prefix}-colorpicker-panel-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-colorpicker-panel-border-radius: var(--ioc-control-radius);
+
+    --#{$prefix}-slider-track-background: var(--ioc-surface-border);
+    --#{$prefix}-slider-range-background: var(--ioc-primary-color);
+    --#{$prefix}-slider-handle-background: var(--ioc-primary-color);
+
+    --#{$prefix}-toggleswitch-checked-background: var(--ioc-primary-color);
+    --#{$prefix}-toggleswitch-checked-hover-background: var(--ioc-primary-hover-color);
+    --#{$prefix}-toggleswitch-handle-background: var(--ioc-primary-contrast-color);
+    --#{$prefix}-toggleswitch-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-toggleswitch-background: var(--ioc-surface-border);
+
+    --#{$prefix}-chip-background: var(--ioc-surface-section, var(--ioc-surface-hover));
+    --#{$prefix}-chip-color: var(--ioc-control-color);
+    --#{$prefix}-chip-icon-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-chip-remove-icon-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-chip-border-radius: 71.35714286rem;
+
+    --#{$prefix}-badge-primary-background: var(--ioc-primary-color);
+    --#{$prefix}-badge-primary-color: var(--ioc-primary-contrast-color);
+    --#{$prefix}-badge-font-size: var(--ioc-control-font-size);
+    --#{$prefix}-badge-min-width: 1.25rem;
+    --#{$prefix}-badge-height: 1.25rem;
+
+    --#{$prefix}-accordion-header-background: var(--ioc-surface-section, var(--ioc-control-background));
+    --#{$prefix}-accordion-header-hover-background: var(--ioc-surface-hover);
+    --#{$prefix}-accordion-header-active-background: var(--ioc-control-background);
+    --#{$prefix}-accordion-header-active-hover-background: var(--ioc-surface-hover);
+    --#{$prefix}-accordion-header-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-accordion-header-hover-color: var(--ioc-control-color);
+    --#{$prefix}-accordion-header-active-color: var(--ioc-control-color);
+    --#{$prefix}-accordion-header-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-accordion-header-toggle-icon-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-accordion-header-first-top-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-accordion-header-last-bottom-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-accordion-content-background: var(--ioc-control-background);
+    --#{$prefix}-accordion-content-color: var(--ioc-control-color);
+    --#{$prefix}-accordion-content-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-accordion-panel-border-color: var(--ioc-control-border-color);
+
+    --#{$prefix}-tree-background: var(--ioc-control-background);
+    --#{$prefix}-tree-color: var(--ioc-control-color);
+    --#{$prefix}-tree-node-color: var(--ioc-control-color);
+    --#{$prefix}-tree-node-hover-background: var(--ioc-surface-hover);
+    --#{$prefix}-tree-node-hover-color: var(--ioc-control-color);
+    --#{$prefix}-tree-node-selected-background: var(--ioc-highlight-background);
+    --#{$prefix}-tree-node-selected-color: var(--ioc-highlight-color);
+    --#{$prefix}-tree-node-toggle-button-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-tree-node-border-radius: var(--ioc-button-sm-radius);
+
+    --#{$prefix}-popover-background: var(--ioc-surface-overlay, var(--ioc-control-background));
+    --#{$prefix}-popover-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-popover-color: var(--ioc-control-color);
+    --#{$prefix}-popover-border-radius: var(--ioc-control-radius);
+
+    --#{$prefix}-menu-background: var(--ioc-surface-overlay, var(--ioc-control-background));
+    --#{$prefix}-menu-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-menu-color: var(--ioc-control-color);
+    --#{$prefix}-menu-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-menu-item-color: var(--ioc-control-color);
+    --#{$prefix}-menu-item-focus-background: var(--ioc-surface-hover);
+    --#{$prefix}-menu-item-focus-color: var(--ioc-control-color);
+    --#{$prefix}-menu-item-icon-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-menu-item-icon-focus-color: var(--ioc-control-color);
+
+    --#{$prefix}-drawer-background: var(--ioc-control-background);
+    --#{$prefix}-drawer-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-drawer-color: var(--ioc-control-color);
+
+    --#{$prefix}-skeleton-background: var(--ioc-surface-section, var(--ioc-surface-hover));
+    --#{$prefix}-skeleton-border-radius: var(--ioc-button-sm-radius);
+
+    --#{$prefix}-fileupload-background: var(--ioc-control-background);
+    --#{$prefix}-fileupload-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-fileupload-color: var(--ioc-control-color);
+    --#{$prefix}-fileupload-border-radius: var(--ioc-card-radius);
+    --#{$prefix}-fileupload-header-background: var(--ioc-surface-section, var(--ioc-control-background));
+    --#{$prefix}-fileupload-header-color: var(--ioc-control-color);
+    --#{$prefix}-fileupload-header-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-fileupload-content-highlight-border-color: var(--ioc-primary-color);
+
+    --#{$prefix}-splitter-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-splitter-gutter-background: var(--ioc-surface-section, var(--ioc-surface-border));
+    --#{$prefix}-splitter-handle-background: var(--ioc-control-placeholder-color);
+
+    --#{$prefix}-stepper-step-number-background: var(--ioc-surface-section, var(--ioc-control-background));
+    --#{$prefix}-stepper-step-number-color: var(--ioc-control-color);
+    --#{$prefix}-stepper-step-number-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-stepper-step-number-active-background: var(--ioc-primary-color);
+    --#{$prefix}-stepper-step-number-active-color: var(--ioc-primary-contrast-color);
+    --#{$prefix}-stepper-step-number-active-border-color: var(--ioc-primary-color);
+    --#{$prefix}-stepper-step-title-color: var(--ioc-control-placeholder-color);
+    --#{$prefix}-stepper-step-title-active-color: var(--ioc-control-color);
+    --#{$prefix}-stepper-separator-background: var(--ioc-control-border-color);
+
+    --#{$prefix}-divider-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-divider-color: var(--ioc-control-placeholder-color);
+
+    --#{$prefix}-progressbar-background: var(--ioc-surface-section, var(--ioc-surface-border));
+    --#{$prefix}-progressbar-value-background: var(--ioc-primary-color);
+    --#{$prefix}-progressbar-border-radius: var(--ioc-button-sm-radius);
+    --#{$prefix}-progressspinner-color-one: var(--ioc-primary-color);
+    --#{$prefix}-progressspinner-color-two: var(--ioc-primary-hover-color);
+    --#{$prefix}-progressspinner-color-three: var(--ioc-primary-active-color);
+    --#{$prefix}-progressspinner-color-four: var(--ioc-primary-color);
+
+    --#{$prefix}-message-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-message-info-background: var(--ioc-highlight-background);
+    --#{$prefix}-message-info-color: var(--ioc-text-color);
+    --#{$prefix}-message-info-border-color: var(--ioc-tag-info);
+    --#{$prefix}-message-success-background: var(--ioc-control-background);
+    --#{$prefix}-message-success-color: var(--ioc-tag-success);
+    --#{$prefix}-message-success-border-color: var(--ioc-tag-success);
+    --#{$prefix}-message-warn-background: var(--ioc-control-background);
+    --#{$prefix}-message-warn-color: var(--ioc-tag-warn);
+    --#{$prefix}-message-warn-border-color: var(--ioc-tag-warn);
+    --#{$prefix}-message-error-background: var(--ioc-control-background);
+    --#{$prefix}-message-error-color: var(--ioc-tag-danger);
+    --#{$prefix}-message-error-border-color: var(--ioc-tag-danger);
+
+    --#{$prefix}-toast-border-radius: var(--ioc-control-radius);
+    --#{$prefix}-toast-info-background: var(--ioc-surface-overlay, var(--ioc-control-background));
+    --#{$prefix}-toast-info-border-color: var(--ioc-tag-info);
+    --#{$prefix}-toast-info-color: var(--ioc-text-color);
+    --#{$prefix}-toast-info-detail-color: var(--ioc-text-muted-color);
+    --#{$prefix}-toast-success-background: var(--ioc-surface-overlay, var(--ioc-control-background));
+    --#{$prefix}-toast-success-border-color: var(--ioc-tag-success);
+    --#{$prefix}-toast-success-color: var(--ioc-text-color);
+    --#{$prefix}-toast-success-detail-color: var(--ioc-text-muted-color);
+    --#{$prefix}-toast-warn-background: var(--ioc-surface-overlay, var(--ioc-control-background));
+    --#{$prefix}-toast-warn-border-color: var(--ioc-tag-warn);
+    --#{$prefix}-toast-warn-color: var(--ioc-text-color);
+    --#{$prefix}-toast-warn-detail-color: var(--ioc-text-muted-color);
+    --#{$prefix}-toast-error-background: var(--ioc-surface-overlay, var(--ioc-control-background));
+    --#{$prefix}-toast-error-border-color: var(--ioc-tag-danger);
+    --#{$prefix}-toast-error-color: var(--ioc-text-color);
+    --#{$prefix}-toast-error-detail-color: var(--ioc-text-muted-color);
+    --#{$prefix}-toast-secondary-background: var(--ioc-surface-section, var(--ioc-control-background));
+    --#{$prefix}-toast-secondary-border-color: var(--ioc-control-border-color);
+    --#{$prefix}-toast-secondary-color: var(--ioc-text-color);
+    --#{$prefix}-toast-secondary-detail-color: var(--ioc-text-muted-color);
+
+    --#{$prefix}-splitbutton-border-radius: var(--ioc-button-radius);
+    --#{$prefix}-speeddial-gap: 0.5rem;
+}
+
+@mixin surfaces($important: false) {
+    .p-autocomplete-input,
+    .p-inputnumber-input {
+        @include control-like($important);
+        @include declare.decl(padding, 0 var(--ioc-control-padding-x), $important);
+    }
+
+    .p-autocomplete-input-multiple {
+        @include control-like($important);
+        @include declare.decl(height, auto, $important);
+        @include declare.decl(min-height, var(--ioc-control-height), $important);
+        @include declare.decl(padding, 0.25rem var(--ioc-control-padding-x), $important);
+    }
+
+    .p-autocomplete:has(.p-autocomplete-dropdown) .p-autocomplete-input {
+        @include declare.decl(
+            border-radius,
+            var(--ioc-control-radius) 0 0 var(--ioc-control-radius),
+            $important
+        );
+    }
+
+    .p-autocomplete-dropdown {
+        @include declare.decl(width, var(--ioc-control-height), $important);
+        @include declare.decl(height, var(--ioc-control-height), $important);
+        @include declare.decl(background, var(--ioc-control-background), $important);
+        @include declare.decl(border, 1px solid var(--ioc-control-border-color), $important);
+        border-inline-start: 0;
+        @include declare.decl(
+            border-radius,
+            0 var(--ioc-control-radius) var(--ioc-control-radius) 0,
+            $important
+        );
+        color: var(--ioc-control-placeholder-color);
+        box-shadow: none;
+    }
+
+    .p-inputnumber-button {
+        @include declare.decl(width, var(--ioc-control-height), $important);
+        @include declare.decl(height, var(--ioc-control-height), $important);
+        @include declare.decl(background, var(--ioc-surface-section, var(--ioc-control-background)), $important);
+        @include declare.decl(color, var(--ioc-control-placeholder-color), $important);
+        @include declare.decl(border, 1px solid var(--ioc-control-border-color), $important);
+    }
+
+    .p-inputgroupaddon {
+        @include declare.decl(background, var(--ioc-surface-section, var(--ioc-control-background)), $important);
+        @include declare.decl(color, var(--ioc-control-color), $important);
+        @include declare.decl(border-color, var(--ioc-control-border-color), $important);
+        @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+    }
+
+    .p-selectbutton {
+        @include declare.decl(min-height, var(--ioc-control-height), $important);
+        @include declare.decl(border-radius, var(--ioc-control-radius), $important);
+
+        .p-togglebutton {
+            @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+        }
+    }
+
+    .p-colorpicker-preview {
+        @include declare.decl(width, var(--ioc-control-height), $important);
+        @include declare.decl(height, var(--ioc-control-height), $important);
+        @include declare.decl(border-radius, var(--ioc-control-radius), $important);
+        @include declare.decl(border, 1px solid var(--ioc-control-border-color), $important);
+    }
+
+    .p-chip,
+    .p-accordionheader,
+    .p-accordioncontent,
+    .p-tree,
+    .p-tree-node-label,
+    .p-menu,
+    .p-toast,
+    .p-message,
+    .p-fileupload,
+    .p-stepper,
+    .p-drawer {
+        @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+    }
+
+    .p-select-overlay,
+    .p-multiselect-overlay,
+    .p-treeselect-overlay,
+    .p-autocomplete-overlay,
+    .p-datepicker-panel,
+    .p-colorpicker-panel,
+    .p-popover,
+    .p-menu,
+    .p-toast,
+    .p-drawer,
+    .p-confirmdialog,
+    &.p-select-overlay,
+    &.p-multiselect-overlay,
+    &.p-treeselect-overlay,
+    &.p-autocomplete-overlay,
+    &.p-datepicker-panel,
+    &.p-colorpicker-panel,
+    &.p-popover,
+    &.p-menu,
+    &.p-toast,
+    &.p-drawer,
+    &.p-confirmdialog {
+        @include declare.decl(background, var(--ioc-surface-overlay, var(--ioc-control-background)), $important);
+        @include declare.decl(color, var(--ioc-control-color), $important);
+        @include declare.decl(border-color, var(--ioc-control-border-color), $important);
+        @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+    }
+
+    .p-select-overlay,
+    .p-multiselect-overlay,
+    .p-treeselect-overlay,
+    .p-autocomplete-overlay,
+    .p-popover,
+    .p-menu,
+    &.p-select-overlay,
+    &.p-multiselect-overlay,
+    &.p-treeselect-overlay,
+    &.p-autocomplete-overlay,
+    &.p-popover,
+    &.p-menu {
+        @include declare.decl(border-radius, var(--ioc-control-radius), $important);
+    }
+
+    .p-select-option,
+    .p-multiselect-option,
+    .p-autocomplete-option,
+    .p-menu-item-link,
+    .p-tree-node-content {
+        @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+        min-height: 2rem;
+    }
+}
+
+@mixin control-like($important: false) {
+    box-sizing: border-box;
+    @include declare.decl(height, var(--ioc-control-height), $important);
+    @include declare.decl(min-height, var(--ioc-control-height), $important);
+    @include declare.decl(border-radius, var(--ioc-control-radius), $important);
+    @include declare.decl(background, var(--ioc-control-background), $important);
+    @include declare.decl(border, 1px solid var(--ioc-control-border-color), $important);
+    @include declare.decl(color, var(--ioc-control-color), $important);
+    @include declare.decl(font-size, var(--ioc-control-font-size), $important);
+    line-height: var(--ioc-control-line-height);
+    letter-spacing: var(--ioc-control-letter-spacing);
+    box-shadow: none;
+
+    &:enabled:focus,
+    &.p-focus,
+    &:focus-within {
+        @include declare.decl(border-color, var(--ioc-control-focus-color), $important);
+        @include declare.decl(box-shadow, var(--ioc-control-focus-ring), $important);
+        outline: none;
+    }
+}
