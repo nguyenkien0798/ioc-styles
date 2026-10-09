@@ -1,8 +1,9 @@
-// variable.css là bảng token PrimeNG gốc.
-// Màu IOC chỉnh ở theme/ioc-light/theme.css và theme/ioc-dark/theme.css, nạp sau nên thắng.
+// Chỉ nạp biến. Không có rule đè component PrimeNG.
+// shared.css: cỡ chữ, kích thước, màu dùng chung.
+// ioc-light / ioc-dark: mã màu từng theme.
 
 @use 'sass:meta';
 
-@include meta.load-css('theme/variable.css');
+@include meta.load-css('theme/shared.css');
 @include meta.load-css('theme/ioc-light/theme.css');
 @include meta.load-css('theme/ioc-dark/theme.css');

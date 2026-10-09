@@ -1,8 +1,6 @@
-/* Theme sáng. Sửa màu ở file này.
-   Nạp sau variable.css, gắn lên :root, nên đè token semantic của PrimeNG. */
+/* Màu theme sáng. Gắn lên :root. */
 
 :root {
-    --font-family: "Inter var", sans-serif;
     --ioc-primary-color: #0070ce;
     --ioc-primary-contrast-color: #ffffff;
     --ioc-primary-hover-color: #2563eb;
@@ -23,45 +21,11 @@
     --ioc-highlight-background: #eff6ff;
     --ioc-highlight-color: #1d4ed8;
     --ioc-error-color: #dd0707;
-    --ioc-invalid-color: #ef4444;
-    --ioc-focus-ring: 0 0 0.28571429rem 0 #039ff6;
+    --ioc-focus-ring: 0 0 0.25rem 0 #039ff6;
 
     --ioc-tag-primary: #0284c7;
     --ioc-tag-info: #0284c7;
     --ioc-tag-success: #07964a;
     --ioc-tag-warn: #d97706;
     --ioc-tag-danger: #e11d48;
-    --ioc-tag-lock: #f65151;
-
-    --p-primary-color: var(--ioc-primary-color);
-    --p-primary-contrast-color: var(--ioc-primary-contrast-color);
-    --p-primary-hover-color: var(--ioc-primary-hover-color);
-    --p-primary-active-color: var(--ioc-primary-active-color);
-    --p-text-color: var(--ioc-text-color);
-    --p-text-muted-color: var(--ioc-text-muted-color);
-    --p-content-background: var(--ioc-surface-card);
-    --p-content-border-color: var(--ioc-surface-border);
-    --p-content-hover-background: var(--ioc-surface-hover);
-    --p-content-color: var(--ioc-text-color);
-    --p-highlight-background: var(--ioc-highlight-background);
-    --p-highlight-color: var(--ioc-highlight-color);
-    --p-mask-background: var(--ioc-mask-background);
-
-    --primary-color: var(--ioc-primary-color);
-    --primary-color-text: var(--ioc-primary-contrast-color);
-    --text-color: var(--ioc-text-color);
-    --text-color-secondary: var(--ioc-text-muted-color);
-    --surface-ground: var(--ioc-surface-ground);
-    --surface-section: var(--ioc-surface-section);
-    --surface-card: var(--ioc-surface-card);
-    --surface-overlay: var(--ioc-surface-overlay);
-    --surface-border: var(--ioc-surface-border);
-    --surface-hover: var(--ioc-surface-hover);
-    --app-control-background: var(--ioc-control-fill);
-    --maskbg: var(--ioc-mask-background);
-    --highlight-bg: var(--ioc-highlight-background);
-    --highlight-text-color: var(--ioc-highlight-color);
-    --error-color: var(--ioc-error-color);
-    --tag-lock-color: var(--ioc-tag-lock);
-    --focus-ring: var(--ioc-focus-ring);
 }

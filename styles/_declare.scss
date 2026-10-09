@@ -1,7 +1,0 @@
-@mixin decl($property, $value, $important: false) {
-    @if $important {
-        #{$property}: #{$value} !important;
-    } @else {
-        #{$property}: #{$value};
-    }
-}

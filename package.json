@@ -2,7 +2,7 @@
   "name": "ioc-styles",
   "version": "1.0.0",
   "author": "Nguyen Dinh Kien",
-  "description": "Token và lớp style PrimeNG theo component của iocv3-fe, dùng chung cho micro-app.",
+  "description": "Biến màu, cỡ chữ và kích thước dùng chung cho micro-app. Không đè CSS component.",
   "license": "MIT",
   "files": [
     "styles"
