@@ -1,75 +1,94 @@
 :root {
     --font-family: "Inter var", sans-serif;
 
+    /* Font-size gốc. Các nhóm component bên dưới trỏ về đây. */
     --ioc-font-size-body: 15px;
     --ioc-font-size-control: 14px;
-    --ioc-font-size-helper: 13px;
+    --ioc-font-size-helper: 11.375px;
     --ioc-font-size-tag: 14px;
     --ioc-font-size-menu: 14px;
     --ioc-font-size-dialog-title: 21px;
 
-    --ioc-font-body: var(--ioc-font-size-body);
-    --ioc-font-dialog-title: var(--ioc-font-size-dialog-title);
-    --ioc-font-tag: var(--ioc-font-size-tag);
-    --ioc-font-menu: var(--ioc-font-size-menu);
-    --ioc-control-font-size: var(--ioc-font-size-control);
-    --ioc-helper-font-size: var(--ioc-font-size-helper);
-    --ioc-label-font-size: var(--ioc-font-size-control);
-    --ioc-button-font-size: var(--ioc-font-size-control);
-    --ioc-page-title-font-size: var(--ioc-font-size-dialog-title);
+    /* Form và tiêu đề trang. */
     --app-form-font-size: 14px;
     --app-title-text-size: 21px;
     --app-title-content-text-size: 18px;
 
-    --ioc-control-height: 40px;
+    /* Nhãn form. */
+    --ioc-label-font-size: var(--ioc-font-size-control);
+    --ioc-label-gap: 3.5px;
+    --ioc-label-margin-bottom: 5.25px;
+    --ioc-label-font-weight: 500;
+
+    /* Input và select. */
+    --ioc-control-height: 35px;
     --ioc-control-radius: 12px;
-    --ioc-control-line-height: 22px;
-    --ioc-control-padding-x: 12px;
+    --ioc-control-line-height: 19.25px;
+    --ioc-control-padding-x: 10.5px;
     --ioc-control-letter-spacing: -0.015em;
     --ioc-control-transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
     --ioc-disabled-opacity: 0.6;
-
+    --ioc-control-font-size: var(--ioc-font-size-control);
     --ioc-control-background: var(--ioc-surface-card);
     --ioc-control-border-color: var(--ioc-surface-border);
     --ioc-control-color: var(--ioc-text-color);
     --ioc-control-placeholder-color: var(--ioc-text-muted-color);
     --ioc-control-focus-color: var(--ioc-primary-color);
     --ioc-control-focus-ring: 0 0 0 1px var(--ioc-control-focus-color);
+    --ioc-dropdown-width: 31.5px;
 
+    /* Textarea. Height và radius dùng nhóm input. */
+    --ioc-textarea-min-height: 70px;
+    --ioc-helper-font-size: var(--ioc-font-size-helper);
+
+    /* Button. */
     --ioc-button-height: var(--ioc-control-height);
     --ioc-button-radius: var(--ioc-control-radius);
     --ioc-button-padding-x: 12px;
+    --ioc-button-font-size: var(--ioc-font-size-control);
     --ioc-button-font-weight: 500;
-    --ioc-button-sm-height: 32px;
+    --ioc-button-sm-height: 28px;
     --ioc-button-sm-radius: 8px;
-    --ioc-button-sm-padding-x: 12px;
-    --ioc-button-lg-height: 48px;
-    --ioc-button-icon-size: 16px;
+    --ioc-button-sm-padding-x: 10.5px;
+    --ioc-button-lg-height: 42px;
+    --ioc-button-icon-size: 14px;
     --ioc-button-border-radius: var(--ioc-button-radius);
     --ioc-button-compact-height: var(--ioc-button-sm-height);
-    --ioc-action-size: 32px;
-    --ioc-action-radius: 8px;
+
+    /* Button icon. */
+    --ioc-action-size: 28px;
+    --ioc-action-radius: 7px;
     --ioc-action-icon-size: var(--ioc-button-icon-size);
 
-    --ioc-label-gap: 4px;
-    --ioc-label-margin-bottom: 6px;
-    --ioc-label-font-weight: 500;
+    /* Checkbox. */
+    --ioc-checkbox-size: 17.5px;
+    --ioc-checkbox-radius: 3.5px;
 
-    --ioc-card-radius: 24px;
-    --ioc-card-padding: 24px;
+    /* Tag. Màu theo theme nằm ở ioc-light / ioc-dark. */
+    --ioc-font-tag: var(--ioc-font-size-tag);
+    --ioc-tag-lock: #f65151;
+
+    /* Chữ nội dung và menu. */
+    --ioc-font-body: var(--ioc-font-size-body);
+    --ioc-font-menu: var(--ioc-font-size-menu);
+
+    /* Dialog và tiêu đề trang. */
+    --ioc-font-dialog-title: var(--ioc-font-size-dialog-title);
+    --ioc-page-title-font-size: var(--ioc-font-size-dialog-title);
     --ioc-dialog-radius: 16px;
-    --ioc-checkbox-size: 20px;
-    --ioc-checkbox-radius: 4px;
-    --ioc-dropdown-width: 36px;
-    --ioc-textarea-min-height: 80px;
 
+    /* Card. */
+    --ioc-card-radius: 21px;
+    --ioc-card-padding: 21px;
+    --card-shadow: 0 1.75px 3.5px rgba(0, 0, 0, 0.075);
+
+    /* Màu không đổi theo sáng/tối. */
     --ioc-gray-400: #9ca3af;
     --ioc-invalid-color: #ef4444;
     --ioc-required-color: #f65a5a;
-    --ioc-tag-lock: #f65151;
 
+    /* Tên cũ còn dùng. */
     --border-radius: 16px;
     --content-border-radius: var(--border-radius);
-    --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.075);
     --layout-section-transition-duration: 0.2s;
 }
