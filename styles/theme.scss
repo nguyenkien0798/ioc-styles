@@ -1,7 +1,3 @@
-// Chỉ nạp biến. Không có rule đè component PrimeNG.
-// shared.css: cỡ chữ, kích thước, màu dùng chung.
-// ioc-light / ioc-dark: mã màu từng theme.
-
 @use 'sass:meta';
 
 @include meta.load-css('theme/shared.css');

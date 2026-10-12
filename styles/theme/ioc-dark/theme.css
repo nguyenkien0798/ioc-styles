@@ -16,12 +16,17 @@
     --ioc-surface-border: #424b57;
     --ioc-surface-hover: #05375f;
     --ioc-control-fill: #1c324a;
+    --ioc-surface-alt: #151c23;
+    --ioc-surface-50: #2f3e50;
+    --ioc-surface-100: #232d39;
+    --ioc-surface-500: #a0a0a0;
+    --ioc-surface-700: #d0d0d0;
 
     --ioc-mask-background: rgba(0, 0, 0, 0.8);
     --ioc-highlight-background: #2f4f6b;
     --ioc-highlight-color: hsl(210, 3%, 89%);
     --ioc-error-color: #f65a5a;
-    --ioc-focus-ring: 0 0 0 0.2rem rgba(129, 140, 248, 0.2);
+    --ioc-focus-ring: 0 0 0 3.2px rgba(129, 140, 248, 0.2);
 
     --ioc-tag-primary: #38bdf8;
     --ioc-tag-info: #38bdf8;
