@@ -12,17 +12,17 @@ npm install ioc-styles
 
 Cần Sass trong app (`sass` với Angular, `sass` với Vite hoặc CRA).
 
-`ioc-styles` và `ioc-styles/theme` nạp cùng một bộ biến.
+`ioc-styles` và `ioc-styles/theme` nạp cùng một bộ biến. Màu đổi theo sáng/tối nằm ở `ioc-light/theme.css` và `ioc-dark/theme.css`, đúng tên biến app đang đọc (`--primary-color`, `--surface-*`, `--p-primary-color`, …).
 
 ## Angular
 
-Trong file style global, sau stylesheet khác của app:
+Trong file style global:
 
 ```scss
 @use 'ioc-styles/theme';
 ```
 
-File đó phải nằm trong `styles` của `angular.json` (hoặc `project.json`).
+File đó phải nằm trong `styles` của `angular.json` (hoặc `project.json`). App không khai báo lại các biến màu này.
 
 ## React
 
@@ -71,7 +71,7 @@ Bỏ class `dark` để về sáng. Không cần đổi file CSS.
 }
 ```
 
-Token của thư viện UI (PrimeNG, MUI, Ant Design, …) không tự ăn bộ này. App tự gán, ví dụ `--p-primary-color: var(--ioc-primary-color)`.
+Sửa màu sáng/tối ở `ioc-light/theme.css` và `ioc-dark/theme.css`. App chỉ `@use 'ioc-styles/theme'`.
 
 ## Biến nằm ở đâu
 
@@ -79,7 +79,7 @@ Token của thư viện UI (PrimeNG, MUI, Ant Design, …) không tự ăn bộ 
 |---|---|---|
 | `styles/theme/shared.css` | `:root` | cỡ chữ, chiều cao, bo góc, màu không đổi theo theme |
 | `styles/theme/ioc-light/theme.css` | `:root` | màu sáng |
-| `styles/theme/ioc-dark/theme.css` | `.dark` | màu tối |
+| `styles/theme/ioc-dark/theme.css` | `.dark` | màu tối, gồm `--primary-color`, `--surface-*`, `--p-*` |
 
 ## Biến thường dùng
 

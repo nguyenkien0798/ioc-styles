@@ -1,33 +1,176 @@
-/* Màu theme tối. Gắn lên .dark (class trên <html>). */
+/* Biến màu theme tối. Gắn lên .dark (class trên <html>).
+   Đây là các biến iocv3-fe đang đọc khi đổi theme. */
 
 .dark {
-    --ioc-primary-color: #49aafc;
-    --ioc-primary-contrast-color: #0a0c11;
-    --ioc-primary-hover-color: #93c5fd;
-    --ioc-primary-active-color: #bfdbfe;
+    --surface-a: #15283c;
+    --surface-b: #151c23;
+    --surface-c: #05375f;
+    --surface-d: #424b57;
+    --surface-e: #15283c;
+    --surface-f: #15283c;
+    --text-color: #e1e2e3;
+    --text-color-secondary: rgba(255, 255, 255, 0.6);
+    --primary-color: #49aafc;
+    --primary-color-text: #0a0c11;
+    --surface-0: #0a0c11;
+    --surface-50: #2f3e50;
+    --surface-100: #232d39;
+    --surface-200: #595959;
+    --surface-300: #717171;
+    --surface-400: #898989;
+    --surface-500: #a0a0a0;
+    --surface-600: #b8b8b8;
+    --surface-700: #d0d0d0;
+    --surface-800: #e7e7e7;
+    --surface-900: #ffffff;
+    --surface-ground: #15283c;
+    --surface-section: #0a0c11;
+    --surface-card: #15283c;
+    --surface-overlay: #15283c;
+    --surface-border: #424b57;
+    --surface-hover: #05375f;
+    --app-control-background: #1c324a;
+    --focus-ring: 0 0 0 0.2rem rgba(129, 140, 248, 0.2);
+    --maskbg: rgba(0, 0, 0, 0.8);
+    --highlight-bg: #2f4f6b;
+    --highlight-text-color: hsl(210, 3%, 89%);
+    --error-color: #fca5a5;
+    --tag-lock-color: #f65151;
 
-    --ioc-text-color: #e1e2e3;
-    --ioc-text-muted-color: rgba(255, 255, 255, 0.6);
+    --p-surface-0: #ffffff;
+    --p-surface-50: var(--p-zinc-50);
+    --p-surface-100: var(--p-zinc-100);
+    --p-surface-200: var(--p-zinc-200);
+    --p-surface-300: var(--p-zinc-300);
+    --p-surface-400: var(--p-zinc-400);
+    --p-surface-500: var(--p-zinc-500);
+    --p-surface-600: var(--p-zinc-600);
+    --p-surface-700: var(--p-zinc-700);
+    --p-surface-800: var(--p-zinc-800);
+    --p-surface-900: var(--p-zinc-900);
+    --p-surface-950: var(--p-zinc-950);
+    --p-primary-color: var(--p-primary-400);
+    --p-primary-contrast-color: var(--p-surface-900);
+    --p-primary-hover-color: var(--p-primary-300);
+    --p-primary-active-color: var(--p-primary-200);
+    --p-highlight-background: color-mix(
+        in srgb,
+        var(--p-primary-400),
+        transparent 84%
+    );
+    --p-highlight-focus-background: color-mix(
+        in srgb,
+        var(--p-primary-400),
+        transparent 76%
+    );
+    --p-highlight-color: rgba(255, 255, 255, 0.87);
+    --p-highlight-focus-color: rgba(255, 255, 255, 0.87);
+    --p-focus-ring-shadow: 0 0 0 0.2rem
+        color-mix(in srgb, var(--p-primary-color), transparent 80%);
+    --p-mask-background: rgba(0, 0, 0, 0.6);
+    --p-mask-color: var(--p-surface-200);
+    --p-form-field-background: #151c23;
+    --p-form-field-disabled-background: var(--p-surface-700);
+    --p-form-field-filled-background: var(--p-surface-800);
+    --p-form-field-filled-hover-background: var(--p-surface-800);
+    --p-form-field-filled-focus-background: var(--p-surface-950);
+    --p-form-field-border-color: var(--p-surface-600);
+    --p-form-field-hover-border-color: var(--p-primary-color);
+    --p-form-field-focus-border-color: var(--p-primary-color);
+    --p-form-field-invalid-border-color: var(--p-red-300);
+    --p-form-field-color: var(--p-surface-0);
+    --p-form-field-disabled-color: var(--p-surface-400);
+    --p-form-field-placeholder-color: var(--p-surface-400);
+    --p-form-field-invalid-placeholder-color: var(--p-red-400);
+    --p-form-field-float-label-color: var(--p-surface-400);
+    --p-form-field-float-label-focus-color: var(--p-primary-color);
+    --p-form-field-float-label-active-color: var(--p-surface-400);
+    --p-form-field-float-label-invalid-color: var(
+        --p-form-field-invalid-placeholder-color
+    );
+    --p-form-field-icon-color: var(--p-surface-400);
+    --p-form-field-shadow: none;
+    --p-text-color: var(--p-surface-0);
+    --p-text-hover-color: var(--p-surface-0);
+    --p-text-muted-color: var(--p-surface-400);
+    --p-text-hover-muted-color: var(--p-surface-300);
+    --p-content-background: var(--p-surface-900);
+    --p-content-hover-background: var(--p-surface-800);
+    --p-content-border-color: var(--p-surface-700);
+    --p-content-color: var(--p-text-color);
+    --p-content-hover-color: var(--p-text-hover-color);
+    --p-overlay-select-background: var(--p-surface-900);
+    --p-overlay-select-border-color: var(--p-surface-700);
+    --p-overlay-select-color: var(--p-text-color);
+    --p-overlay-popover-background: var(--p-surface-900);
+    --p-overlay-popover-border-color: var(--p-surface-700);
+    --p-overlay-popover-color: var(--p-text-color);
+    --p-overlay-modal-background: var(--p-surface-900);
+    --p-overlay-modal-border-color: var(--p-surface-700);
+    --p-overlay-modal-color: var(--p-text-color);
+    --p-list-option-focus-background: var(--p-surface-800);
+    --p-list-option-selected-background: var(--p-highlight-background);
+    --p-list-option-selected-focus-background: var(
+        --p-highlight-focus-background
+    );
+    --p-list-option-color: var(--p-text-color);
+    --p-list-option-focus-color: var(--p-text-hover-color);
+    --p-list-option-selected-color: var(--p-highlight-color);
+    --p-list-option-selected-focus-color: var(--p-highlight-focus-color);
+    --p-list-option-icon-color: var(--p-surface-500);
+    --p-list-option-icon-focus-color: var(--p-surface-400);
+    --p-list-option-group-background: transparent;
+    --p-list-option-group-color: var(--p-text-color);
+    --p-navigation-item-focus-background: var(--p-surface-800);
+    --p-navigation-item-active-background: var(--p-surface-800);
+    --p-navigation-item-color: var(--p-text-color);
+    --p-navigation-item-focus-color: var(--p-text-hover-color);
+    --p-navigation-item-active-color: var(--p-text-hover-color);
+    --p-navigation-item-icon-color: var(--p-surface-500);
+    --p-navigation-item-icon-focus-color: var(--p-surface-400);
+    --p-navigation-item-icon-active-color: var(--p-surface-400);
+    --p-navigation-submenu-label-background: transparent;
+    --p-navigation-submenu-label-color: var(--p-text-color);
+    --p-navigation-submenu-icon-color: var(--p-surface-500);
+    --p-navigation-submenu-icon-focus-color: var(--p-surface-400);
+    --p-navigation-submenu-icon-active-color: var(--p-surface-400);
 
-    --ioc-surface-ground: #15283c;
-    --ioc-surface-section: #0a0c11;
-    --ioc-surface-card: #15283c;
-    --ioc-surface-overlay: #15283c;
-    --ioc-surface-border: #424b57;
-    --ioc-surface-hover: #05375f;
-    --ioc-control-fill: #1c324a;
-    --ioc-surface-alt: #151c23;
-    --ioc-surface-50: #2f3e50;
-    --ioc-surface-100: #232d39;
-    --ioc-surface-500: #a0a0a0;
-    --ioc-surface-700: #d0d0d0;
-
-    --ioc-mask-background: rgba(0, 0, 0, 0.8);
-    --ioc-highlight-background: #2f4f6b;
-    --ioc-highlight-color: hsl(210, 3%, 89%);
+    --ioc-primary-color: var(--primary-color);
+    --ioc-primary-contrast-color: var(--primary-color-text);
+    --ioc-primary-hover-color: var(--p-primary-hover-color);
+    --ioc-primary-active-color: var(--p-primary-active-color);
+    --ioc-text-color: var(--text-color);
+    --ioc-text-muted-color: var(--text-color-secondary);
+    --ioc-surface-a: var(--surface-a);
+    --ioc-surface-b: var(--surface-b);
+    --ioc-surface-c: var(--surface-c);
+    --ioc-surface-d: var(--surface-d);
+    --ioc-surface-e: var(--surface-e);
+    --ioc-surface-f: var(--surface-f);
+    --ioc-surface-ground: var(--surface-ground);
+    --ioc-surface-section: var(--surface-section);
+    --ioc-surface-card: var(--surface-card);
+    --ioc-surface-overlay: var(--surface-overlay);
+    --ioc-surface-border: var(--surface-border);
+    --ioc-surface-hover: var(--surface-hover);
+    --ioc-control-fill: var(--app-control-background);
+    --ioc-surface-alt: var(--surface-b);
+    --ioc-surface-0: var(--surface-0);
+    --ioc-surface-50: var(--surface-50);
+    --ioc-surface-100: var(--surface-100);
+    --ioc-surface-200: var(--surface-200);
+    --ioc-surface-300: var(--surface-300);
+    --ioc-surface-400: var(--surface-400);
+    --ioc-surface-500: var(--surface-500);
+    --ioc-surface-600: var(--surface-600);
+    --ioc-surface-700: var(--surface-700);
+    --ioc-surface-800: var(--surface-800);
+    --ioc-surface-900: var(--surface-900);
+    --ioc-mask-background: var(--maskbg);
+    --ioc-highlight-background: var(--highlight-bg);
+    --ioc-highlight-color: var(--highlight-text-color);
     --ioc-error-color: #f65a5a;
-    --ioc-focus-ring: 0 0 0 3.2px rgba(129, 140, 248, 0.2);
-
+    --ioc-focus-ring: var(--focus-ring);
     --ioc-tag-primary: #38bdf8;
     --ioc-tag-info: #38bdf8;
     --ioc-tag-success: #27dc70;
