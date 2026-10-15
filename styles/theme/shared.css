@@ -6,7 +6,7 @@
     --font-family: "Inter var", sans-serif;
 
     /* Cỡ chữ nội dung. Gắn font-size của đoạn văn, bảng. */
-    --ioc-font-size-body: 15px;
+    --ioc-font-size-body: 14px;
     --ioc-font-body: var(--ioc-font-size-body);
 
     /* Cỡ chữ form. Gắn font-size của ô nhập, select, nút, nhãn, chữ trong bảng form. */
