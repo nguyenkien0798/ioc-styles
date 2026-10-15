@@ -1,74 +1,102 @@
-/* Đếm var() trong src của iocv3-fe, bỏ file khai báo theme.
-   Nhiều: từ 10 chỗ. Ít: 1–9 chỗ. Không dùng: source app không đọc. */
+/* Kích thước và cỡ chữ, không đổi theo sáng/tối.
+   Mỗi nhóm ghi thuộc tính CSS cần gắn. Lấy biến đúng nhóm, đừng lấy biến bo góc để chỉnh cỡ chữ. */
 
 :root {
-    /* Dùng nhiều. */
-    --app-form-font-size: 14px; /* 175 — chữ form, bảng, ô nhập */
-    --font-family: "Inter var", sans-serif; /* 13 — font toàn app */
-    --ioc-font-size-tag: 14px; /* app đọc qua --ioc-font-tag */
-    --ioc-font-tag: var(--ioc-font-size-tag); /* 15 — cỡ chữ tag */
+    /* Font. Gắn font-family. */
+    --font-family: "Inter var", sans-serif;
 
-    /* Dùng ít. */
-    --border-radius: 16px; /* 8 — bo góc panel, khối layout */
-    --app-title-content-text-size: 18px; /* 6 — tiêu đề khối nội dung */
-    --ioc-font-size-body: 15px; /* app đọc qua --ioc-font-body */
-    --ioc-font-body: var(--ioc-font-size-body); /* 6 — chữ nội dung */
-    --card-shadow: 0 1.75px 3.5px rgba(0, 0, 0, 0.075); /* 4 — bóng card, menu */
-    --ioc-font-size-dialog-title: 21px; /* app đọc qua --ioc-font-dialog-title */
-    --ioc-font-dialog-title: var(--ioc-font-size-dialog-title); /* 4 — tiêu đề dialog */
-    --app-title-text-size: 21px; /* 3 — tiêu đề trang, topbar */
-    --ioc-font-size-menu: 14px; /* app đọc qua --ioc-font-menu */
-    --ioc-font-menu: var(--ioc-font-size-menu); /* 1 — chữ menu */
+    /* Cỡ chữ nội dung. Gắn font-size của đoạn văn, bảng. */
+    --ioc-font-size-body: 15px;
+    --ioc-font-body: var(--ioc-font-size-body);
 
-    /* Không dùng trong source iocv3-fe. */
-    --ioc-font-size-control: 14px; /* cỡ chữ gốc cho input, nút, nhãn */
-    --ioc-font-size-helper: 11.375px; /* cỡ chữ gốc cho dòng phụ */
-    --ioc-label-font-size: var(--ioc-font-size-control); /* cỡ chữ nhãn */
-    --ioc-label-gap: 3.5px; /* khoảng cách nhãn và dấu * */
-    --ioc-label-margin-bottom: 5.25px; /* khoảng cách nhãn với ô nhập */
-    --ioc-label-font-weight: 500; /* độ đậm nhãn */
-    --ioc-control-height: 35px; /* chiều cao ô nhập, select */
-    --ioc-control-radius: 12px; /* bo góc ô nhập, select */
-    --ioc-control-line-height: 19.25px; /* cao dòng chữ trong ô */
-    --ioc-control-padding-x: 10.5px; /* đệm trái phải trong ô */
-    --ioc-control-letter-spacing: -0.015em; /* giãn chữ trong ô */
-    --ioc-control-transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1); /* tốc độ hover, focus */
-    --ioc-disabled-opacity: 0.6; /* độ mờ khi khóa */
-    --ioc-control-font-size: var(--ioc-font-size-control); /* cỡ chữ trong ô */
-    --ioc-control-background: var(--ioc-surface-card); /* nền ô */
-    --ioc-control-border-color: var(--ioc-surface-border); /* viền ô */
-    --ioc-control-color: var(--ioc-text-color); /* chữ trong ô */
-    --ioc-control-placeholder-color: var(--ioc-text-muted-color); /* chữ gợi ý */
-    --ioc-control-focus-color: var(--ioc-primary-color); /* viền khi focus */
-    --ioc-control-focus-ring: 0 0 0 1px var(--ioc-control-focus-color); /* vòng focus */
-    --ioc-dropdown-width: 31.5px; /* rộng icon mũi tên select */
-    --ioc-textarea-min-height: 70px; /* cao tối thiểu textarea */
-    --ioc-helper-font-size: var(--ioc-font-size-helper); /* cỡ chữ dòng trợ giúp */
-    --ioc-button-height: var(--ioc-control-height); /* cao nút */
-    --ioc-button-radius: var(--ioc-control-radius); /* bo góc nút */
-    --ioc-button-padding-x: 12px; /* đệm trái phải nút */
-    --ioc-button-font-size: var(--ioc-font-size-control); /* cỡ chữ nút */
-    --ioc-button-font-weight: 500; /* độ đậm chữ nút */
-    --ioc-button-sm-height: 28px; /* cao nút nhỏ */
-    --ioc-button-sm-radius: 8px; /* bo góc nút nhỏ */
-    --ioc-button-sm-padding-x: 10.5px; /* đệm nút nhỏ */
-    --ioc-button-lg-height: 42px; /* cao nút lớn */
-    --ioc-button-icon-size: 14px; /* cỡ icon trong nút */
-    --ioc-button-border-radius: var(--ioc-button-radius); /* tên cũ, bo góc nút */
-    --ioc-button-compact-height: var(--ioc-button-sm-height); /* tên cũ, cao nút nhỏ */
-    --ioc-action-size: 28px; /* cạnh nút icon */
-    --ioc-action-radius: 7px; /* bo góc nút icon */
-    --ioc-action-icon-size: var(--ioc-button-icon-size); /* cỡ icon nút icon */
-    --ioc-checkbox-size: 17.5px; /* cạnh checkbox */
-    --ioc-checkbox-radius: 3.5px; /* bo góc checkbox */
-    --ioc-tag-lock: #f65151; /* màu tag khóa; app đọc --tag-lock-color */
-    --ioc-page-title-font-size: var(--ioc-font-size-dialog-title); /* cỡ chữ tiêu đề trang */
-    --ioc-dialog-radius: 16px; /* bo góc dialog */
-    --ioc-card-radius: 21px; /* bo góc card */
-    --ioc-card-padding: 21px; /* đệm trong card */
-    --ioc-gray-400: #9ca3af; /* xám trung tính */
-    --ioc-invalid-color: #ef4444; /* màu ô nhập lỗi */
-    --ioc-required-color: #f65a5a; /* màu dấu bắt buộc */
-    --content-border-radius: var(--border-radius); /* alias bo góc chung */
-    --layout-section-transition-duration: 0.2s; /* thời gian chuyển section */
+    /* Cỡ chữ form. Gắn font-size của ô nhập, select, nút, nhãn, chữ trong bảng form. */
+    --app-form-font-size: 14px;
+    --ioc-font-size-control: 14px;
+    --ioc-label-font-size: var(--ioc-font-size-control);
+    --ioc-control-font-size: var(--ioc-font-size-control);
+    --ioc-button-font-size: var(--ioc-font-size-control);
+
+    /* Cỡ chữ phụ. Gắn font-size của dòng gợi ý dưới ô nhập. */
+    --ioc-font-size-helper: 11.375px;
+    --ioc-helper-font-size: var(--ioc-font-size-helper);
+
+    /* Cỡ chữ tiêu đề. Gắn font-size của tiêu đề, không dùng cho chữ form. */
+    --app-title-text-size: 21px; /* tiêu đề trang, chữ trên topbar */
+    --app-title-content-text-size: 18px; /* tiêu đề một khối trong trang */
+    --ioc-font-size-dialog-title: 21px;
+    --ioc-font-dialog-title: var(--ioc-font-size-dialog-title); /* tiêu đề dialog */
+    --ioc-page-title-font-size: var(--ioc-font-size-dialog-title); /* tiêu đề trang */
+
+    /* Cỡ chữ menu. Gắn font-size của mục menu. */
+    --ioc-font-size-menu: 14px;
+    --ioc-font-menu: var(--ioc-font-size-menu);
+
+    /* Cỡ chữ tag. Gắn font-size của tag. */
+    --ioc-font-size-tag: 14px;
+    --ioc-font-tag: var(--ioc-font-size-tag);
+
+    /* Nhãn trên ô nhập. */
+    --ioc-label-gap: 3.5px; /* gap giữa nhãn và dấu * */
+    --ioc-label-margin-bottom: 5.25px; /* margin-bottom, cách ô nhập */
+    --ioc-label-font-weight: 500; /* font-weight của nhãn */
+
+    /* Ô nhập và select. */
+    --ioc-control-height: 35px; /* height */
+    --ioc-control-radius: 12px; /* border-radius */
+    --ioc-control-line-height: 19.25px; /* line-height */
+    --ioc-control-padding-x: 10.5px; /* padding trái phải */
+    --ioc-control-letter-spacing: -0.015em; /* letter-spacing */
+    --ioc-control-transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1); /* transition hover, focus */
+    --ioc-dropdown-width: 31.5px; /* width vùng icon mũi tên của select */
+    --ioc-textarea-min-height: 70px; /* min-height của textarea */
+    --ioc-disabled-opacity: 0.6; /* opacity khi ô hoặc nút bị khóa */
+
+    /* Màu ô nhập. Giá trị màu nằm ở file sáng/tối. */
+    --ioc-control-background: var(--ioc-surface-card); /* background */
+    --ioc-control-border-color: var(--ioc-surface-border); /* border-color */
+    --ioc-control-color: var(--ioc-text-color); /* color */
+    --ioc-control-placeholder-color: var(--ioc-text-muted-color); /* color chữ gợi ý */
+    --ioc-control-focus-color: var(--ioc-primary-color); /* border-color khi focus */
+    --ioc-control-focus-ring: 0 0 0 1px var(--ioc-control-focus-color); /* box-shadow khi focus */
+
+    /* Nút chữ. Cao và bo góc đi theo ô nhập. */
+    --ioc-button-height: var(--ioc-control-height); /* height nút thường */
+    --ioc-button-radius: var(--ioc-control-radius); /* border-radius nút thường */
+    --ioc-button-padding-x: 12px; /* padding trái phải */
+    --ioc-button-font-weight: 500; /* font-weight */
+    --ioc-button-icon-size: 14px; /* width/height icon trong nút */
+    --ioc-button-sm-height: 28px; /* height nút nhỏ */
+    --ioc-button-sm-radius: 8px; /* border-radius nút nhỏ */
+    --ioc-button-sm-padding-x: 10.5px; /* padding nút nhỏ */
+    --ioc-button-lg-height: 42px; /* height nút lớn */
+    --ioc-button-border-radius: var(--ioc-button-radius); /* tên cũ của bo góc nút thường */
+    --ioc-button-compact-height: var(--ioc-button-sm-height); /* tên cũ của cao nút nhỏ */
+
+    /* Nút chỉ có icon, ví dụ sửa hoặc xóa trên bảng. */
+    --ioc-action-size: 28px; /* width và height */
+    --ioc-action-radius: 7px; /* border-radius */
+    --ioc-action-icon-size: var(--ioc-button-icon-size); /* cỡ icon */
+
+    /* Checkbox. */
+    --ioc-checkbox-size: 17.5px; /* width và height */
+    --ioc-checkbox-radius: 3.5px; /* border-radius */
+
+    /* Dialog. */
+    --ioc-dialog-radius: 16px; /* border-radius */
+
+    /* Card. */
+    --ioc-card-radius: 21px; /* border-radius */
+    --ioc-card-padding: 21px; /* padding */
+    --card-shadow: 0 1.75px 3.5px rgba(0, 0, 0, 0.075); /* box-shadow của card, menu, popover */
+
+    /* Trạng thái form. Gắn color hoặc border-color, không dùng làm nền trang. */
+    --ioc-invalid-color: #ef4444; /* ô nhập lỗi */
+    --ioc-required-color: #f65a5a; /* dấu * bắt buộc */
+    --ioc-tag-lock: #f65151; /* chữ và viền tag trạng thái khóa */
+    --ioc-gray-400: #9ca3af; /* xám icon phụ, chữ mờ */
+
+    /* Bo góc khối layout. Gắn border-radius của panel, không dùng cho ô nhập. */
+    --border-radius: 16px;
+    --content-border-radius: var(--border-radius);
+    --layout-section-transition-duration: 0.2s; /* transition khi đổi section */
 }

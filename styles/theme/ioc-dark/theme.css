@@ -1,52 +1,83 @@
-/* Biến màu theme tối. Gắn lên .dark (class trên <html>).
-   Cùng cách đếm với theme sáng. */
+/* Màu tối, gắn lên .dark. Cùng tên và cùng thứ tự với theme sáng.
+   Khi viết CSS, lấy biến đúng việc:
+
+   color chữ thường          --text-color
+   color chữ phụ, gợi ý      --text-color-secondary
+   color chữ trên nút chính  --primary-color-text
+   background cả trang       --surface-ground
+   background card, bảng     --surface-card
+   background ô nhập         --app-control-background
+   background menu, popup    --surface-overlay
+   background lúc hover      --surface-hover
+   border-color              --surface-border
+   color nút chính, link     --primary-color
+
+   Khối --p-* để PrimeNG tự đọc. CSS tự viết không gắn các tên --p-*. */
 
 .dark {
-    /* Dùng nhiều. */
-    --text-color: #e1e2e3; /* 283 — chữ chính */
-    --surface-border: #424b57; /* 146 — màu viền */
-    --text-color-secondary: rgba(255, 255, 255, 0.6); /* 144 — chữ phụ, placeholder */
-    --surface-card: #15283c; /* 102 — nền card, bảng */
-    --primary-color: #49aafc; /* 62 — màu nút, link, focus */
-    --surface-hover: #05375f; /* 33 — nền khi hover hàng, nút phụ */
-    --app-control-background: #1c324a; /* 18 — nền ô nhập */
-    --surface-ground: #15283c; /* 18 — nền trang */
-    --surface-50: #2f3e50; /* 10 — bậc xám */
+    /* Chữ. Gắn color. */
+    --text-color: #e1e2e3; /* chữ chính */
+    --text-color-secondary: rgba(255, 255, 255, 0.6); /* chữ phụ, placeholder */
+    --primary-color-text: #0a0c11; /* chữ nằm trên nền --primary-color */
+    --highlight-text-color: hsl(210, 3%, 89%); /* chữ của dòng đang chọn */
+    --error-color: #fca5a5; /* chữ và viền báo lỗi */
 
-    /* Dùng ít. */
-    --maskbg: rgba(0, 0, 0, 0.8); /* 8 — lớp phủ phía sau dialog */
-    --highlight-bg: #2f4f6b; /* 4 — nền dòng đang chọn */
-    --primary-color-text: #0a0c11; /* 3 — chữ trên nền màu chính */
-    --surface-100: #232d39; /* 3 */
-    --surface-500: #a0a0a0; /* 3 */
-    --surface-900: #ffffff; /* 3 */
-    --surface-overlay: #15283c; /* 3 — nền menu, popup */
-    --surface-a: #15283c; /* 3 — nền panel */
-    --error-color: #fca5a5; /* 2 — màu lỗi */
-    --surface-700: #d0d0d0; /* 2 */
-    --surface-c: #05375f; /* 2 — nền nhấn xanh */
-    --tag-lock-color: #f65151; /* 2 — màu tag trạng thái khóa */
-    --surface-b: #151c23; /* 1 — nền tối hơn, panel phụ */
+    /* Nút chính và link. Gắn background của nút primary, hoặc color của link. */
+    --primary-color: #49aafc;
 
-    /* Không dùng trong source iocv3-fe. */
-    --surface-d: #424b57; /* xám viền */
-    --surface-e: #15283c; /* nền panel */
-    --surface-f: #15283c; /* nền panel */
+    /* Nền. Gắn background đúng tầng, đừng lấy nền trang để tô card. */
+    --surface-ground: #15283c; /* nền cả trang */
+    --surface-section: #0a0c11; /* nền một khối section */
+    --surface-card: #15283c; /* nền card, bảng, dialog */
+    --surface-overlay: #15283c; /* nền menu, popup */
+    --app-control-background: #1c324a; /* nền ô nhập, select */
+    --surface-hover: #05375f; /* nền khi hover hàng, menu, nút phụ */
+    --highlight-bg: #2f4f6b; /* nền dòng đang chọn */
+    --maskbg: rgba(0, 0, 0, 0.8); /* lớp mờ phía sau dialog */
+
+    /* Viền. Gắn border-color. */
+    --surface-border: #424b57;
+
+    /* Focus. Gắn box-shadow. */
+    --focus-ring: 0 0 0 0.2rem rgba(129, 140, 248, 0.2);
+
+    /* Tag khóa. Gắn color và border-color của tag đó. */
+    --tag-lock-color: #f65151;
+
+    /* Tên cũ của nền. Code mới dùng các tên nền ở trên.
+       --surface-b là nguồn của --app-control-background bên theme sáng. */
+    --surface-a: #15283c; /* nền một số ô nhập cũ */
+    --surface-b: #151c23; /* nền phụ */
+    --surface-c: #05375f; /* nền nhấn xanh, ví dụ topbar */
+    --surface-d: #424b57; /* xám gần màu viền */
+    --surface-e: #15283c;
+    --surface-f: #15283c;
+
+    /* Thang xám. Chỉ dùng khi cần một bậc xám.
+       Không dùng thay --text-color, --surface-border hay --surface-card. */
     --surface-0: #0a0c11;
+    --surface-50: #2f3e50;
+    --surface-100: #232d39;
     --surface-200: #595959;
     --surface-300: #717171;
     --surface-400: #898989;
+    --surface-500: #a0a0a0;
     --surface-600: #b8b8b8;
+    --surface-700: #d0d0d0;
     --surface-800: #e7e7e7;
-    --surface-section: #0a0c11; /* nền khối section */
-    --focus-ring: 0 0 0 0.2rem rgba(129, 140, 248, 0.2); /* bóng khi focus */
-    --highlight-text-color: hsl(210, 3%, 89%); /* chữ dòng đang chọn */
+    --surface-900: #ffffff;
+    --gray-50: var(--p-gray-50);
+    --gray-100: var(--p-gray-100);
+    --gray-200: var(--p-gray-200);
+    --gray-300: var(--p-gray-300);
+    --gray-400: var(--p-gray-400);
+    --gray-500: var(--p-gray-500);
+    --gray-600: var(--p-gray-600);
+    --gray-700: var(--p-gray-700);
+    --gray-800: var(--p-gray-800);
+    --gray-900: var(--p-gray-900);
 
-    /* Token PrimeNG. Source app gọi tên --p-primary-color (61),
-       --p-primary-hover-color (8), --p-primary-active-color (7),
-       --p-primary-contrast-color (3), --p-text-color (2).
-       Các --p-* còn lại app không gọi; PrimeNG đọc khi render component. */
-    /* Thang nền. */
+    /* PrimeNG tự đọc khối này khi vẽ component. App không gắn vào CSS tự viết. */
     --p-surface-0: #ffffff;
     --p-surface-50: var(--p-zinc-50);
     --p-surface-100: var(--p-zinc-100);
@@ -59,12 +90,12 @@
     --p-surface-800: var(--p-zinc-800);
     --p-surface-900: var(--p-zinc-900);
     --p-surface-950: var(--p-zinc-950);
-    /* Màu chính: nút primary, link, viền focus. */
+    /* Màu nút primary, link và viền focus của component Prime. */
     --p-primary-color: var(--p-primary-400);
     --p-primary-contrast-color: var(--p-surface-900);
     --p-primary-hover-color: var(--p-primary-300);
     --p-primary-active-color: var(--p-primary-200);
-    /* Nền và chữ của mục đang chọn. */
+    /* Nền và chữ của mục đang chọn trong component Prime. */
     --p-highlight-background: color-mix(
         in srgb,
         var(--p-primary-400),
@@ -77,12 +108,12 @@
     );
     --p-highlight-color: rgba(255, 255, 255, 0.87);
     --p-highlight-focus-color: rgba(255, 255, 255, 0.87);
-    /* Bóng focus và lớp mờ dialog. */
+    /* Bóng focus và lớp mờ dialog của Prime. */
     --p-focus-ring-shadow: 0 0 0 0.2rem
         color-mix(in srgb, var(--p-primary-color), transparent 80%);
     --p-mask-background: rgba(0, 0, 0, 0.6);
     --p-mask-color: var(--p-surface-200);
-    /* Ô nhập Prime: nền, viền, chữ, placeholder, trạng thái lỗi và khóa. */
+    /* Ô nhập Prime: nền, viền, chữ, placeholder, lỗi, khóa. */
     --p-form-field-background: #151c23;
     --p-form-field-disabled-background: var(--p-surface-700);
     --p-form-field-filled-background: var(--p-surface-800);
@@ -104,7 +135,7 @@
     );
     --p-form-field-icon-color: var(--p-surface-400);
     --p-form-field-shadow: none;
-    /* Chữ nội dung Prime. */
+    /* Chữ trong component Prime. */
     --p-text-color: var(--p-surface-0);
     --p-text-hover-color: var(--p-surface-0);
     --p-text-muted-color: var(--p-surface-400);
@@ -125,7 +156,7 @@
     --p-overlay-modal-background: var(--p-surface-900);
     --p-overlay-modal-border-color: var(--p-surface-700);
     --p-overlay-modal-color: var(--p-text-color);
-    /* Dòng trong danh sách: hover, đang chọn, icon. */
+    /* Dòng danh sách Prime: hover, đang chọn, icon. */
     --p-list-option-focus-background: var(--p-surface-800);
     --p-list-option-selected-background: var(--p-highlight-background);
     --p-list-option-selected-focus-background: var(
@@ -139,7 +170,7 @@
     --p-list-option-icon-focus-color: var(--p-surface-400);
     --p-list-option-group-background: transparent;
     --p-list-option-group-color: var(--p-text-color);
-    /* Mục menu và submenu. */
+    /* Mục menu Prime. */
     --p-navigation-item-focus-background: var(--p-surface-800);
     --p-navigation-item-active-background: var(--p-surface-800);
     --p-navigation-item-color: var(--p-text-color);
@@ -154,30 +185,33 @@
     --p-navigation-submenu-icon-focus-color: var(--p-surface-400);
     --p-navigation-submenu-icon-active-color: var(--p-surface-400);
 
-    /* Tên --ioc-* . Source app chỉ đọc --ioc-error-color. Còn lại không gọi. */
-    --ioc-error-color: #f65a5a; /* 7 — màu lỗi */
-
-    /* Không dùng trong source iocv3-fe. Sửa màu ở khối đầu file. */
-    --ioc-primary-color: var(--primary-color); /* màu chính */
-    --ioc-primary-contrast-color: var(--primary-color-text); /* chữ trên màu chính */
-    --ioc-primary-hover-color: var(--p-primary-hover-color); /* màu chính khi hover */
-    --ioc-primary-active-color: var(--p-primary-active-color); /* màu chính khi nhấn */
+    /* Tên ioc-* trỏ cùng mục đích với tên ở trên.
+       Code mới đọc tên này. App cũ vẫn đọc tên không có tiền tố ioc. */
     --ioc-text-color: var(--text-color); /* chữ chính */
     --ioc-text-muted-color: var(--text-color-secondary); /* chữ phụ */
+    --ioc-primary-color: var(--primary-color); /* nút chính, link */
+    --ioc-primary-contrast-color: var(--primary-color-text); /* chữ trên nút chính */
+    --ioc-primary-hover-color: var(--p-primary-hover-color); /* nút chính khi hover */
+    --ioc-primary-active-color: var(--p-primary-active-color); /* nút chính khi nhấn */
+    --ioc-surface-ground: var(--surface-ground); /* nền trang */
+    --ioc-surface-section: var(--surface-section); /* nền section */
+    --ioc-surface-card: var(--surface-card); /* nền card */
+    --ioc-surface-overlay: var(--surface-overlay); /* nền menu, popup */
+    --ioc-control-fill: var(--app-control-background); /* nền ô nhập */
+    --ioc-surface-hover: var(--surface-hover); /* nền hover */
+    --ioc-highlight-background: var(--highlight-bg); /* nền dòng đang chọn */
+    --ioc-highlight-color: var(--highlight-text-color); /* chữ dòng đang chọn */
+    --ioc-mask-background: var(--maskbg); /* lớp mờ dialog */
+    --ioc-surface-border: var(--surface-border); /* viền */
+    --ioc-focus-ring: var(--focus-ring); /* bóng focus */
+    --ioc-error-color: #f65a5a; /* màu lỗi */
+    --ioc-surface-alt: var(--surface-b); /* nền phụ */
     --ioc-surface-a: var(--surface-a);
     --ioc-surface-b: var(--surface-b);
     --ioc-surface-c: var(--surface-c);
     --ioc-surface-d: var(--surface-d);
     --ioc-surface-e: var(--surface-e);
     --ioc-surface-f: var(--surface-f);
-    --ioc-surface-ground: var(--surface-ground); /* nền trang */
-    --ioc-surface-section: var(--surface-section); /* nền section */
-    --ioc-surface-card: var(--surface-card); /* nền card */
-    --ioc-surface-overlay: var(--surface-overlay); /* nền overlay */
-    --ioc-surface-border: var(--surface-border); /* viền */
-    --ioc-surface-hover: var(--surface-hover); /* nền hover */
-    --ioc-control-fill: var(--app-control-background); /* nền ô nhập */
-    --ioc-surface-alt: var(--surface-b); /* nền phụ */
     --ioc-surface-0: var(--surface-0);
     --ioc-surface-50: var(--surface-50);
     --ioc-surface-100: var(--surface-100);
@@ -189,13 +223,9 @@
     --ioc-surface-700: var(--surface-700);
     --ioc-surface-800: var(--surface-800);
     --ioc-surface-900: var(--surface-900);
-    --ioc-mask-background: var(--maskbg); /* lớp mờ dialog */
-    --ioc-highlight-background: var(--highlight-bg); /* nền mục chọn */
-    --ioc-highlight-color: var(--highlight-text-color); /* chữ mục chọn */
-    --ioc-focus-ring: var(--focus-ring); /* bóng focus */
-    --ioc-tag-primary: #38bdf8; /* tag loại primary */
-    --ioc-tag-info: #38bdf8; /* tag loại info */
-    --ioc-tag-success: #27dc70; /* tag thành công */
-    --ioc-tag-warn: #fbbf24; /* tag cảnh báo */
-    --ioc-tag-danger: #fb7185; /* tag nguy hiểm */
+    --ioc-tag-primary: #38bdf8; /* chữ tag loại primary */
+    --ioc-tag-info: #38bdf8; /* chữ tag loại info */
+    --ioc-tag-success: #27dc70; /* chữ tag thành công */
+    --ioc-tag-warn: #fbbf24; /* chữ tag cảnh báo */
+    --ioc-tag-danger: #fb7185; /* chữ tag nguy hiểm */
 }
