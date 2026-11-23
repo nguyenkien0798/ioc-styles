@@ -75,7 +75,7 @@
     /* Nút chỉ có icon, ví dụ sửa hoặc xóa trên bảng. */
     --ioc-action-size: 28px; /* width và height */
     --ioc-action-radius: 7px; /* border-radius */
-    --ioc-action-icon-size: var(--ioc-button-icon-size); /* cỡ icon */
+    --ioc-action-icon-size: 16px; /* font-size / cỡ icon thao tác */
 
     /* Checkbox. */
     --ioc-checkbox-size: 17.5px; /* width và height */
